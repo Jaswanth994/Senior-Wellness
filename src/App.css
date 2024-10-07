@@ -1,141 +1,22 @@
-/* Ensure full height and width */
-html, body {
+html, body{
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%; /* Full width */
-  font-family: Arial, sans-serif;
+  width: 100%;
   box-sizing: border-box;
+  font-family: 'Helvetica', sans-serif;
 }
 
-/* Ensure all elements respect box-sizing */
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-/* Root container for the app */
-#root {
-  height: 100%;
-  width: 100%; /* Full width */
-}
-
-/* General app container */
 .App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Full height */
-  width: 100%; /* Full width */
-  background-color: #f5f5f5;
-}
-/* Container */
-.container {
-  background-color: #00695c;
-  display: flex; /* This makes the child elements align horizontally */
-  justify-content: space-between; /* Distributes the elements evenly */
-  align-items: center; /* Aligns them vertically in the middle */
+  min-height: 100vh;
 }
 
-
-/* Header styles */
-.header {
-  background-color: #00695c;
-  color: white;
-  padding: 20px;
-  display: flex; /* Use flexbox for alignment */
-  justify-content: space-between; /Space between title and nav/
-  align-items: center; /* Center vertically */
-}
-
-.header-title {
-  margin: 0; /* Remove margin for consistent spacing */
-  font-size: 2rem; /* Larger title size */
-}
-
-/* Navigation bar styles */
-.nav {
-  display: flex; /* Keep the navigation links in a row */
-  margin-top: 60px;
-}
-
-.nav a {
-  
-  margin: 0 15px; /* Horizontal spacing between links */
-  color: white;
-  text-decoration: none;
-  font-size: 2rem;
-}
-
-.nav a:hover {
-  text-decoration: underline;
-}
-
-/* Hero section (Main banner) */
-.hero {
-  padding: 20px;
-  text-align: center;
-  background-color: #e0e0e0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; /* Ensure full width */
-}
-
-.hero h2 {
-  color: #00695c;
-  font-size: 1.6rem;
-}
-
-.hero-image {
-  width: 300px; /* Adjust size as needed */
-  height: auto; /* Maintain aspect ratio */
-  margin-top: 20px; /* Space above the image */
-}
-
-/* Section for cards */
-.section {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 40px 0;
-  background-color: #e0f7fa;
+#root{
+  height: 100%;
   width: 100%;
 }
 
-/* Card styles */
-.card {
-  background-color: #b2ebf2;
-  padding: 20px;
-  width: 200px;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card img {
-  width: 50px;
-  height: 50px;
-}
-
-.card h3 {
-  margin: 10px 0;
-  color: #004d40;
-  font-size: 1.2rem;
-}
-
-/* Footer styles */
-.footer {
-  background-color: #004d40;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  font-size: 1rem;
+footer {
   margin-top: auto;
-  width: 100%; /* Ensure footer takes full width */
 }

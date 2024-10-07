@@ -1,76 +1,40 @@
 import React from 'react';
-import './App.css'; // Ensure the CSS file is linked
-
-// Importing icons (Ensure these libraries are installed: react-icons/fa)
-import { FaHandsHelping, FaShieldAlt, FaChalkboardTeacher } from 'react-icons/fa';
-
-const Homepage = () => {
-  return (
-    <div className="App">
-      {/* Header Section */}
-      <div className="container">
-      <header className="header">
-        <h1>Senior Wellness</h1>
-      </header>
-
-      {/* Navigation Section */}
-      <nav className="nav">
-        <a href="/login">Login</a>
-        <a href="/signup">Signup</a>
-        <a href="/about">About Us</a>
-        <a href="/contact">Contact</a>
-      </nav>
-
-      </div>
-      
-      {/* Hero Section */}
-      <section className="hero">
-        <h2>Helping Seniors Navigate Tech Safely</h2>
-      </section>
-
-      {/* Main Cards Section */}
-      <section className="section">
-        {/* Tech Help Card */}
-        <div className="card">
-          <FaHandsHelping size={50} color="#004d40" />
-          <h3>Tech Help</h3>
+import Header from './components/Header';
+import HeroSection from './components/HeroSection';
+import FeatureCard from './components/FeatureCard';
+import Footer from './components/Footer';
+import './HomePage.css'; // Include styles
+import image1 from './assets/image1.jpeg';
+import image2 from './assets/image2.jpeg';
+import image3 from './assets/image3.jpeg';
+const HomePage = () => {
+    return (
+        <div>
+            <Header />
+            <HeroSection />
+            <section className="features">
+                <h2>Our Services</h2>
+                <div className="feature-list">
+                    <FeatureCard 
+                        image={image1}
+                        title="Tech Help"
+                        description="Get expert assistance with all your technical needs."
+                    />
+                    <FeatureCard 
+                        image={image2}
+                        title="Scam Prevention"
+                        description="Learn how to prevent scams and stay safe online."
+                    />
+                    <FeatureCard 
+                        image={image3}
+                        title="Live Tutorials"
+                        description="Step-by-step tutorials to help you navigate apps."
+                    />
+                </div>
+            </section>
+            <Footer />
         </div>
-
-        {/* Scam Prevention Card */}
-        <div className="card">
-          <FaShieldAlt size={50} color="#d32f2f" />
-          <h3>Scam Prevention</h3>
-        </div>
-
-        {/* Live Tutorials Card */}
-        <div className="card">
-          <FaChalkboardTeacher size={50} color="#1565c0" />
-          <h3>Live Tutorials</h3>
-        </div>
-      </section>
-
-      {/* Latest Articles & Vlogs Section */}
-      <section className="hero">
-        <h2>Latest Articles & Vlogs</h2>
-        <div className="section">
-          <div className="card">
-            <h3>Understanding Tech</h3>
-          </div>
-          <div className="card">
-            <h3>Common Scams</h3>
-          </div>
-          <div className="card">
-            <h3>Mastering Online Banking</h3>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Section */}
-      <footer className="footer">
-        <p>© 2024 Senior Wellness. All rights reserved.</p>
-      </footer>
-    </div>
-  );
+    );
 };
 
-export default Homepage;
+export default HomePage;
