@@ -1,0 +1,44 @@
+/* Cards Section Styles (Card.css) */
+.section {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 0;
+    background-color: white;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .Headings{
+    background-color: #eaf3fa;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    text-align: center;
+    font-size: larger;
+}
+  
+  .card {
+    background-color: #eaf3fa;
+    color: #333333;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    margin: 20px;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .card h3 {
+    margin: 10px 0;
+    color: #004d40;
+    font-size: 1.5rem;
+  }
+  

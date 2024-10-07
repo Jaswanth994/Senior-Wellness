@@ -1,0 +1,33 @@
+/* Hero Section Styles (Hero.css) */
+.hero {
+    padding: 20px;
+    text-align: center;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero h2 {
+    color: #00695c;
+    font-size: 1.6rem;
+  }
+  .Hero-container{
+    background-color: white;
+    border: 1px solid ;
+    border-radius: 10px;
+    padding: 40px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .hero-image {
+    max-width: 1000px;
+    height: auto;
+    max-height: 500px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
