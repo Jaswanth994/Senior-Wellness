@@ -1,5 +1,5 @@
 import React from 'react';
-import Homepage from './Homepage'; // Import the HomePage component
+import Homepage from './HomePage'; // Import the HomePage component
 import './App.css';  // Import global styles
 
 function App() {
