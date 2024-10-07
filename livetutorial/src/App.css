@@ -1,0 +1,152 @@
+/* General body styling */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #80deea);
+  min-height: 100vh;
+  width: 100vw; /* Ensures it uses the full viewport width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 100%; /* Ensures root takes up the full width */
+  height: 100%; /* Ensures root takes up the full height */
+  display: flex; /* Flexbox ensures full control over content alignment */
+  justify-content: center;
+  align-items: center;
+}
+
+/* General container styling */
+.container {
+  width: 100%; /* Set container width to fill the root */
+  max-width: 600px; /* Limit container width for readability */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+/* Headline */
+h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  background: linear-gradient(135deg, #007bff, #40c4ff);
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Select box styling */
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Button styling */
+.container button {
+  padding: 10px 20px;
+  font-size: 1.25rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* Responsive text sizing */
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  select, button {
+    font-size: 1rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 992px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  select, button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  select, button {
+    font-size: 0.875rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1rem;
+  }
+
+  select, button {
+    font-size: 0.75rem;
+    padding: 8px;
+  }
+}
+
+/* High contrast mode for better visibility */
+@media (prefers-contrast: high) {
+  h1 {
+    color: black;
+  }
+
+  select, button {
+    background-color: black;
+    color: white;
+  }
+}
