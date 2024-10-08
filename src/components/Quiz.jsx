@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const questions = [
-  { question: "Where can you find the 'Help' section in an app?", options: ["Main menu", "Profile section", "At the bottom of the screen", "In the settings"], correct: 3 },
-  { question: "How do you search for something in an app?", options: ["Look for it on the home screen", "Use the search bar at the top", "Ask someone for help", "Open every menu"], correct: 1 },
-];
-
 const Quiz = () => {
+  const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const navigate = useNavigate();
+
+  // Fetch quiz questions from backend
+  const fetchQuestions = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/questions');
+      setQuestions(response.data); // Set the questions from the backend
+    } catch (error) {
+      console.error('Error fetching questions:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchQuestions();  // Fetch questions when the component mounts
+  }, []);
 
   const handleAnswer = (index) => {
     setSelectedAnswer(index);
@@ -30,6 +41,10 @@ const Quiz = () => {
       navigate('/results', { state: { score } });
     }
   };
+
+  if (questions.length === 0) {
+    return <p>Loading questions...</p>; // Handle case when questions are not loaded yet
+  }
 
   return (
     <div className="quiz-container">
