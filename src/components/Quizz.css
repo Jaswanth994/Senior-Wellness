@@ -1,6 +1,6 @@
 /* Global background */
 body {
-    background-color: #ededed; /* Darker Warm Gray background */
+    background-color: #ededed; 
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -9,96 +9,104 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-  }
-  
-  /* Quiz container styling */
-  .quiz-container {
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly more opaque for better contrast */
+}
+
+/* Quiz container styling */
+.quiz-container {
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
-    padding: 2rem;
-    max-width: 800px;
-    width: 100%; /* Ensure responsiveness */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for floating effect */
-    margin-top: 50px; /* Space below the heading */
+    padding: 1.5rem; /* Slightly smaller padding */
+    max-width: 600px; /* Smaller quiz card */
+    width: 100%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
     animation: fadeInUp 1s ease-in-out;
-    text-align: center; /* Center the content */
-  }
-  
-  /* Question heading */
-  .question-heading {
-    color: #2C3E50; /* Dark Slate Blue */
-    font-size: 2rem;
+    text-align: center;
+}
+
+/* Question heading */
+.question-heading {
+    color: #2C3E50; 
+    font-size: 1.8rem; /* Smaller question heading */
     margin-bottom: 1rem;
-  }
-  
-  /* Question text styling */
-  .question-text {
-    color: #333333; /* Charcoal Gray for readability */
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  /* Options styling */
-  .options {
+}
+
+/* Question box styling */
+.question-box {
+    background-color: #fafafa; /* Slight off-white background for question */
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #cccccc; /* Light gray border */
+}
+
+/* Question text styling */
+.question-text {
+    color: #333333;
+    font-size: 1.3rem; /* Smaller question text */
+}
+
+/* Options styling */
+.options {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Spacing between options */
-  }
-  
-  .option {
-    background-color: #FFFFFF; /* White background */
-    color: #333333; /* Charcoal text */
-    padding: 20px;
+    gap: 15px; /* Spacing between options */
+}
+
+.option {
+    background-color: #FFFFFF; 
+    color: #333333; 
+    padding: 15px; /* Slightly smaller padding */
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    font-size: 1.5rem;
-    border: 2px solid transparent;
-  }
-  
-  .option:hover {
-    background-color: #EAF3FA; /* Light Blue Tint on hover */
-    transform: scale(1.05); /* Slight zoom */
-  }
-  
-  .option.correct {
-    background-color: #4CAF50; /* Green for correct answers */
+    font-size: 1.3rem; /* Slightly smaller text for options */
+    border: 2px solid black; /* Black border for options */
+}
+
+.option:hover {
+    background-color: #EAF3FA;
+    transform: scale(1.05);
+}
+
+.option.correct {
+    background-color: #4CAF50; 
     color: white;
-  }
-  
-  .option.incorrect {
-    background-color: #F44336; /* Red for incorrect answers */
+}
+
+.option.incorrect {
+    background-color: #F44336; 
     color: white;
-  }
-  
-  /* Button for next question */
-  .btn-primary {
-    background-color: #F5A623; /* Warm Yellow */
+}
+
+/* Button for next question */
+.btn-primary {
+    background-color: #F5A623; 
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.5rem;
+    padding: 12px 25px;
+    font-size: 1.3rem; /* Slightly smaller button text */
     border-radius: 8px;
     margin-top: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .btn-primary:hover {
-    background-color: #FFCC33; /* Brighter yellow */
+}
+
+.btn-primary:hover {
+    background-color: #FFCC33; 
     transform: scale(1.1);
-  }
-  
-  /* Alert box */
-  .alert {
-    background-color: #EAF3FA; /* Light Blue Tint */
-    color: #2C3E50; /* Dark Slate Blue text */
+}
+
+/* Alert box */
+.alert {
+    background-color: #EAF3FA; 
+    color: #2C3E50;
     padding: 10px;
     border-radius: 8px;
-  }
-  
-  /* Animation for fade-in effect */
-  @keyframes fadeInUp {
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeInUp {
     from {
       opacity: 0;
       transform: translateY(20px);
@@ -107,17 +115,35 @@ body {
       opacity: 1;
       transform: translateY(0);
     }
-  }
-  
-  /* Media query for smaller screens */
-  @media (max-width: 768px) {
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
     .btn-primary {
-      font-size: 1.2rem;
-      padding: 12px 24px;
+      font-size: 1.1rem;
+      padding: 10px 20px;
     }
   
     .option {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
+}
+
+  
+  .btn-primary {
+    padding: 10px 20px;
+    margin: 10px; /* Add margin for spacing */
+    background-color: #007bff; /* Example button color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 5px; /* Optional: to round the corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  
   

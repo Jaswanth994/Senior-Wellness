@@ -1,45 +1,57 @@
 /* Global background */
 body {
-    background-color: #ededed; /* Darker Warm Gray background */
+    background-color: #ededed;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
   
-  /* Results container */
-  .results-container {
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly opaque */
+/* Results container */
+.results-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Card container for score, message, and article */
+.card {
+    background-color: #fff;
     border-radius: 12px;
     padding: 2rem;
     max-width: 600px;
-    width: 100%; /* Responsive design */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    width: 100%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     text-align: center;
     animation: fadeInUp 1s ease-in-out;
-  }
-  
-  /* Results heading */
-  h2 {
+    position: relative;
+    z-index: 1;
+}
+
+/* Results heading */
+h2 {
     font-size: 2.5rem;
-    color: #2C3E50; /* Dark Slate Blue */
+    color: #2C3E50;
     margin-bottom: 1.5rem;
-  }
-  
-  /* Score display */
-  p {
+}
+
+/* Score display and message */
+p {
     font-size: 1.8rem;
-    color: #333333; /* Charcoal Gray for readability */
+    color: #333333;
     margin-bottom: 2rem;
-  }
-  
-  /* Back to home button */
-  .btn-primary {
-    background-color: #F5A623; /* Warm Yellow */
+}
+
+/* Suggested article button */
+.btn-primary {
+    background-color: #F5A623;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -47,38 +59,62 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .btn-primary:hover {
-    background-color: #FFCC33; /* Brighter yellow */
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #FFCC33;
     transform: scale(1.1);
-  }
-  
-  /* Fade-in animation */
-  @keyframes fadeInUp {
+}
+
+/* Back to home button */
+.go-to-home {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #2C3E50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.go-to-home:hover {
+    background-color: #34495E;
+    transform: scale(1.05);
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  /* Media query for smaller screens */
-  @media (max-width: 768px) {
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
     h2 {
-      font-size: 2rem;
+        font-size: 2rem;
     }
-  
+
     p {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-  
+
     .btn-primary {
-      font-size: 1.2rem;
-      padding: 12px 24px;
+        font-size: 1.2rem;
+        padding: 12px 24px;
     }
-  }
-  
+
+    .go-to-home {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
