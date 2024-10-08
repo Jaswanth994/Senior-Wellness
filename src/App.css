@@ -1,28 +1,28 @@
-  /* General body styling */
+  
   html, body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #e0f7fa, #80deea);
     min-height: 100vh;
-    width: 100vw; /* Ensures it uses the full viewport width */
+    width: 100vw; 
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   #root {
-    width: 100%; /* Ensures root takes up the full width */
-    height: 100%; /* Ensures root takes up the full height */
-    display: flex; /* Flexbox ensures full control over content alignment */
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
     justify-content: center;
     align-items: center;
   }
 
-  /* General container styling */
+
   .container {
-    width: 100%; /* Set container width to fill the root */
-    max-width: 600px; /* Limit container width for readability */
+    width: 100%; 
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     background-color: white;
@@ -36,7 +36,7 @@
     transform: scale(1.02);
   }
 
-  /* Headline */
+  
   h1 {
     font-size: 2rem;
     color: #333;
@@ -73,7 +73,7 @@
     border-color: #007bff;
   }
 
-  /* Button styling */
+  
   .container button {
     padding: 10px 20px;
     font-size: 1.25rem;
@@ -94,7 +94,7 @@
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
   }
 
-  /* Responsive text sizing */
+  
   @media (max-width: 1200px) {
     h1 {
       font-size: 1.75rem;
@@ -139,7 +139,7 @@
     }
   }
 
-  /* High contrast mode for better visibility */
+  
   @media (prefers-contrast: high) {
     h1 {
       color: black;

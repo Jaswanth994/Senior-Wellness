@@ -1,11 +1,10 @@
-/* General Styling */
 body, html {
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Full viewport height */
+  min-height: 100vh;
   width: 100vw;
   background-color: #f0f0f0;
   color: black;
@@ -14,8 +13,8 @@ body, html {
 }
 
 .guide-container {
-  width: 90%; /* Adjusts width for smaller screens */
-  max-width: 1200px; /* Limit width for larger screens */
+  width: 90%;
+  max-width: 1200px;
   padding: 20px;
   background-color: white;
   border-radius: 1rem;
@@ -26,17 +25,16 @@ body, html {
   margin: 20px 0;
 }
 
-/* Image and Highlight Box */
 .image-container {
   position: relative;
   display: inline-block;
-  max-width: 100%; /* Ensure image doesn't overflow */
+  max-width: 100%;
 }
 
 .step-image {
-  width: 100%; /* Make image responsive */
+  width: 100%;
   height: auto;
-  border-radius: 1rem; /* Adjusted for smaller screens */
+  border-radius: 1rem;
 }
 
 .highlight-box {
@@ -48,7 +46,6 @@ body, html {
   cursor: pointer;
 }
 
-/* Arrow Styling */
 .arrow {
   position: absolute;
   z-index: 2;
@@ -56,7 +53,6 @@ body, html {
   height: 0;
 }
 
-/* Arrow Styling for Different Directions */
 .arrow-up {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
@@ -75,7 +71,6 @@ body, html {
   border-right: 10px solid rgba(255, 0, 0, 0.7);
 }
 
-/* Button Container Styling */
 .button-container {
   margin-top: 20px;
 }
@@ -83,7 +78,7 @@ body, html {
 .button-container button {
   margin: 10px 5px;
   padding: 8px 16px;
-  font-size: 14px; /* Smaller font size for small screens */
+  font-size: 14px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
@@ -132,17 +127,15 @@ body, html {
   cursor: not-allowed;
 }
 
-/* Layout for Image and Arrow Container */
 .image-and-animation-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Responsive Design for Small Screens */
 @media (max-width: 600px) {
   body, html {
-    overflow: none; /* Add overflow hidden to prevent horizontal scrolling */
+    overflow: none;
   }
 
   .guide-container {
@@ -151,7 +144,7 @@ body, html {
   }
 
   .step-image {
-    width: 100%; /* Full width for small screens */
+    width: 100%;
   }
 
   .highlight-box {
@@ -160,7 +153,7 @@ body, html {
 
   .button-container button {
     padding: 6px 12px;
-    font-size: 12px; /* Smaller font size */
+    font-size: 12px;
   }
 
   .speak-button {
@@ -168,7 +161,6 @@ body, html {
     font-size: 10px;
   }
 
-  /* Adjust arrows for small screens */
   .arrow {
     width: 0;
     height: 0;
@@ -176,10 +168,9 @@ body, html {
   }
 }
 
-/* Responsive Design for Tablets */
 @media (min-width: 600px) and (max-width: 1024px) {
   body, html {
-    overflow: none; /* Add overflow hidden to prevent horizontal scrolling */
+    overflow: none;
   }
 
   .guide-container {
@@ -188,7 +179,7 @@ body, html {
   }
 
   .step-image {
-    width: 90%; /* Slightly smaller on tablets */
+    width: 90%;
   }
 
   .button-container button {
@@ -202,14 +193,13 @@ body, html {
   }
 }
 
-/* Larger Screens (Desktops) */
 @media (min-width: 1024px) {
   .guide-container {
     padding: 30px;
   }
 
   .step-image {
-    width: 80%; /* Keep a larger image size */
+    width: 80%;
   }
 
   .button-container button {

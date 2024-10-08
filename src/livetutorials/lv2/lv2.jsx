@@ -99,8 +99,8 @@ const MapsGuide = () => {
         if (currentStep < steps.length - 1) {
             setCurrentStep((prevStep) => prevStep + 1);
         } else {
-            // Navigate back to the options page after completing all steps
-            navigate(`/`); // Updated path
+            
+            navigate(`/`); 
         }
     };
 
@@ -120,11 +120,11 @@ const MapsGuide = () => {
             speechSynthesis.cancel();
         }
         
-        // Create a new utterance
-        const utterance = new SpeechSynthesisUtterance(text);
-        currentUtterance.current = utterance; // Store the current utterance
         
-        // Speak the utterance
+        const utterance = new SpeechSynthesisUtterance(text);
+        currentUtterance.current = utterance; 
+        
+       
         speechSynthesis.speak(utterance);
     };
 
@@ -132,11 +132,11 @@ const MapsGuide = () => {
 
     useEffect(() => {
         window.addEventListener('click', initializeAudio, { once: true });
-        speakText(info); // Speak the info text whenever the step changes
+        speakText(info); 
         return () => {
             window.removeEventListener('click', initializeAudio);
         };
-    }, [currentStep]); // Add currentStep to the dependency array to call speakText whenever the step changes
+    }, [currentStep]); 
 
     return (
         <div className="guide-container">
@@ -167,8 +167,8 @@ const MapsGuide = () => {
                     }}
                     onMouseEnter={playHoverSound}
                     onClick={handleNext}
-                    whileHover={{ scale: 1.05 }} // Slightly enlarge when hovered
-                    transition={{ duration: 0.2 }} // Transition duration for hover
+                    whileHover={{ scale: 1.05 }} 
+                    transition={{ duration: 0.2 }}
                 ></motion.div>
 
                 <div

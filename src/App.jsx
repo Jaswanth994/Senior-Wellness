@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
-import LocationSharingGuide from './livetutorials/lv1/lv1'; // Import the guide
+import LocationSharingGuide from './livetutorials/lv1/lv1'; 
 import MapsGuide from './livetutorials/lv2/lv2';
 import Ringtone from './livetutorials/lv3/lv3';
 import './App.css';
@@ -16,8 +16,8 @@ const App = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (selectedOption) {
-            navigate(`/option/${selectedOption}`);  // Programmatic navigation
-            setSelectedOption('');  // Reset selected option after navigation
+            navigate(`/option/${selectedOption}`);  
+            setSelectedOption('');  
         }
     };
 
@@ -44,7 +44,7 @@ const Main = () => (
             <Route path="/option/location-guide" element={<LocationSharingGuide />} />
             <Route path="/option/maps-guide" element={<MapsGuide />} />
             <Route path="/option/ring" element={<Ringtone />} />
-            {/* Define other routes here if necessary */}
+            
         </Routes>
     </Router>
 );

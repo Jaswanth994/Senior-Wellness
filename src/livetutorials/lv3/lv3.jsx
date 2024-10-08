@@ -97,11 +97,11 @@ const Ringtone = () => {
   const speakText = (text) => {
     // Stop any ongoing speech
     if (utteranceRef.current) {
-      window.speechSynthesis.cancel(); // Cancel ongoing speech
+      window.speechSynthesis.cancel();
     }
 
     const utterance = new SpeechSynthesisUtterance(text);
-    utteranceRef.current = utterance; // Store the current utterance in the ref
+    utteranceRef.current = utterance;
     speechSynthesis.speak(utterance);
   };
 
@@ -109,14 +109,14 @@ const Ringtone = () => {
 
   useEffect(() => {
     window.addEventListener('click', initializeAudio, { once: true });
-    speakText(info); // Speak the info text whenever the step changes
+    speakText(info); 
     return () => {
       window.removeEventListener('click', initializeAudio);
       if (utteranceRef.current) {
-        window.speechSynthesis.cancel(); // Stop speech synthesis on unmount
+        window.speechSynthesis.cancel();
       }
     };
-  }, [currentStep]); // Add currentStep to the dependency array to call speakText whenever the step changes
+  }, [currentStep]); 
 
   return (
     <div className="guide-container">
@@ -147,8 +147,8 @@ const Ringtone = () => {
           }}
           onMouseEnter={playHoverSound}
           onClick={handleNext}
-          whileHover={{ scale: 1.05 }} // Slightly enlarge when hovered
-          transition={{ duration: 0.2 }} // Transition duration for hover
+          whileHover={{ scale: 1.05 }} 
+          transition={{ duration: 0.2 }} 
         ></motion.div>
 
         <div
@@ -201,8 +201,8 @@ const Ringtone = () => {
       </div>
 
       <p>{description}</p>
-      <div className="info-text-container"> {/* Added container for info text */}
-        <p className="info-text">{info}</p> {/* Updated to use the class */}
+      <div className="info-text-container"> 
+        <p className="info-text">{info}</p> 
       </div>
 
       <div className="button-container">
