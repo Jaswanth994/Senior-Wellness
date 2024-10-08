@@ -5,7 +5,8 @@ import Homepage from './HomePage';  // Homepage component
 import Login from './Login';  // Login component
 import Profile from './Profile';  // Profile component
 import HelloWorld from './Home';  // HelloWorld component
-import Navigation from './Navigation';  // Navigation component
+import Navigation from './Navigation'; 
+import WelcomePopup from './Popup'; // Navigation component
 import './App.css';  // Global styles
 
 import Home from './components/Home.jsx';
@@ -17,7 +18,7 @@ import ArticlePage from './components/articelpage.jsx'; //
 function App() {
   return (
     <div className="App">
-
+ <WelcomePopup />
       {/* Define the routing logic */}
       <Routes>
         {/* Default route to redirect to the Homepage */}

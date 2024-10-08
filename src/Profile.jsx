@@ -1,67 +1,60 @@
 import React, { useState, useEffect } from 'react';
-//import { useLocation } from 'react-router-dom';
-import { database } from './firebaseConfig'; // Import the initialized Firebase database from new.js
-import { ref, orderByChild, equalTo, query, get, update } from 'firebase/database'; // Import necessary Firebase functions
-import { getAuth } from 'firebase/auth'; // Import getAuth from Firebase Auth
-
+import './Profile.css';
+import { database } from './firebaseConfig';
+import { ref, orderByChild, equalTo, query, get, update } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
 
 const Profile = () => {
-    //const queryParams = useQuery();
-    //const emailQuery = queryParams.get('email'); // Optional, you can remove this if you don't use it
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    // Fetch user data from Firebase when the component mounts
     useEffect(() => {
         const auth = getAuth();
         const user = auth.currentUser;
 
         if (user) {
-            const userEmail = user.email; // Get the email of the authenticated user
+            const userEmail = user.email;
             const userRef = query(ref(database, 'users'), orderByChild('email'), equalTo(userEmail));
 
             get(userRef).then((snapshot) => {
                 if (snapshot.exists()) {
                     const userData = snapshot.val();
-                    const userId = Object.keys(userData)[0]; // Get the first user ID
+                    const userId = Object.keys(userData)[0];
                     const userDetails = userData[userId];
 
-                    // Set the state with fetched data
                     setEmail(userDetails.email);
                     setName(userDetails.name);
-                    setPassword(userDetails.password); // Ensure `password` is being saved in Firebase
+                    setPassword(userDetails.password);
                 } else {
                     console.error('No user data found.');
                 }
-                setLoading(false); // Data fetching is complete
+                setLoading(false);
             }).catch((error) => {
                 console.error('Error fetching user data:', error);
                 setLoading(false);
             });
         } else {
             console.error('User is not authenticated');
-            setLoading(false); // Stop loading if no user is authenticated
+            setLoading(false);
         }
     }, []);
-    
-    
+
     const handleSave = () => {
-        if (email) { 
+        if (email) {
             const userRef = query(ref(database, 'users'), orderByChild('email'), equalTo(email));
             get(userRef).then((snapshot) => {
                 if (snapshot.exists()) {
-                    const userId = Object.keys(snapshot.val())[0]; // Get user ID
+                    const userId = Object.keys(snapshot.val())[0];
 
-                   
                     update(ref(database, `users/${userId}`), {
                         email,
                         name,
                         password
                     }).then(() => {
-                        setIsEditing(false); // Stop editing mode
+                        setIsEditing(false);
                         alert('Profile updated successfully!');
                     }).catch((error) => {
                         console.error('Error updating profile:', error);
@@ -78,69 +71,90 @@ const Profile = () => {
     }
 
     return (
-        <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-            <h1>Profile</h1>
-            {!isEditing ? (
-                <div>
-                    <p><strong>Email:</strong> {email}</p>
-                    <p><strong>Name:</strong> {name}</p>
-                    
-                    <button 
-                        style={{ padding: '10px', backgroundColor: '#007BFF', color: 'white', cursor: 'pointer' }}
-                        onClick={() => setIsEditing(true)}
-                    >
-                        Edit Profile
-                    </button>
+        <div className="profile-container">
+            <div className="profile-header">
+                <h1>Hello {name}</h1>
+                <p>This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+                <button onClick={() => setIsEditing(true)}>Edit profile</button>
+            </div>
+            <div className="profile-content">
+                <div className="profile-info">
+                    <div className="profile-info-header">
+                        <h2>My account</h2>
+                        <button>Settings</button>
+                    </div>
+                    {!isEditing ? (
+                        <div>
+                            <div className="profile-field">
+                                <label>Email:</label>
+                                <span>{email}</span>
+                            </div>
+                            <div className="profile-field">
+                                <label>Name:</label>
+                                <span>{name}</span>
+                            </div>
+                        </div>
+                    ) : (
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            handleSave();
+                        }}>
+                            <div className="profile-field">
+                                <label>Email:</label>
+                                <input 
+                                    type="email" 
+                                    value={email} 
+                                    onChange={(e) => setEmail(e.target.value)} 
+                                    required 
+                                />
+                            </div>
+                            <div className="profile-field">
+                                <label>Name:</label>
+                                <input 
+                                    type="text" 
+                                    value={name} 
+                                    onChange={(e) => setName(e.target.value)} 
+                                    required 
+                                />
+                            </div>
+                            <div className="profile-field">
+                                <label>Password:</label>
+                                <input 
+                                    type="password" 
+                                    value={password} 
+                                    onChange={(e) => setPassword(e.target.value)} 
+                                    required 
+                                />
+                            </div>
+                            <button type="submit">Save Changes</button>
+                            <button onClick={() => setIsEditing(false)}>Cancel</button>
+                        </form>
+                    )}
                 </div>
-            ) : (
-                <div>
-                    <form onSubmit={(e) => {
-                        e.preventDefault();
-                        handleSave();
-                    }}>
+                <div className="profile-stats">
+                    <div className="profile-picture">
+                        <img src="https://via.placeholder.com/100" alt="Profile" />
+                    </div>
+                    <div className="profile-actions">
+                        <button>Connect</button>
+                        <button>Message</button>
+                    </div>
+                    <div className="profile-stats-info">
                         <div>
-                            <label>Email:</label>
-                            <input 
-                                type="email" 
-                                value={email} 
-                                onChange={(e) => setEmail(e.target.value)} 
-                                required 
-                            />
+                            <span>22</span>
+                            <span>Friends</span>
                         </div>
                         <div>
-                            <label>Name:</label>
-                            <input 
-                                type="text" 
-                                value={name} 
-                                onChange={(e) => setName(e.target.value)} 
-                                required 
-                            />
+                            <span>10</span>
+                            <span>Photos</span>
                         </div>
                         <div>
-                     <label>Password :</label>
-                   <input 
-                                type="password" 
-                                value={password} 
-                                onChange={(e) => setPassword(e.target.value)} 
-                                required 
-                            />
+                            <span>89</span>
+                            <span>Comments</span>
                         </div>
-                        <button 
-                            type="submit" 
-                            style={{ padding: '10px', backgroundColor: '#007BFF', color: 'white', cursor: 'pointer' }}
-                        >
-                            Save Changes
-                        </button>
-                        <button 
-                            style={{ padding: '10px', backgroundColor: 'grey', color: 'white', cursor: 'pointer', marginLeft: '10px' }}
-                            onClick={() => setIsEditing(false)}
-                        >
-                            Cancel
-                        </button>
-                    </form>
+                    </div>
                 </div>
-            )}
-           
+            </div>
         </div>
     );
 };

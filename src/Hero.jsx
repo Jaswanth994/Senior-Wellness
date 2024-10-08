@@ -1,15 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import heroImage from './assets/image.png'; // Adjust the path if needed
-import './Hero.css'; // Import Header styles
+import './Hero.css'; // Import CSS styles
+
 const Hero = () => {
   return (
-    <div className='Hero-container'>
+    <div className="hero">
+      <h2>Welcome to Senior Wellness!</h2>
+      <div className="Hero-container">
         <img src={heroImage} alt="Hero" className="hero-image" />
+      </div>
     </div>
-    
   );
 };
 
-// No need for prop types if you're not using props
 export default Hero;
