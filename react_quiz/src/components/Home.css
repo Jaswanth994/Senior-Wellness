@@ -1,0 +1,70 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .options-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;  /* Space between buttons */
+    flex-wrap: nowrap;  /* Prevent wrapping to the next line */
+    margin-top: 50px;
+  }
+  
+  .option-box {
+    width: 180px;
+    height: 220px;
+    background-color: #FAFAFA;  /* Default background color */
+    border: 2px solid #d9d9d9;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .animation-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;  /* Ensures the animation does not overflow its container */
+  }
+  
+  .lottie-animation {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .caption {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #2C3E50;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .link.disabled {
+    opacity: 0.5; /* Dim the disabled links */
+  }
+  
+  /* Adding hover effects */
+  .option-box:hover {
+    background-color: wheat; /* Change the entire box to wheat color */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  }
+  
