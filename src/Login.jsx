@@ -9,8 +9,9 @@ import 'font-awesome/css/font-awesome.min.css';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [name, setName] = useState('');
-    const [output, setOutput] = useState('Say "email", "password", "name", "submit", or "login".');
+    const [output, setOutput] = useState('Say 1.Email, 2.password, 3.name, 4. Signup or Login.');
     const [isSignUp, setIsSignUp] = useState(true); // Toggle between sign-up and login
     const [permissionGranted, setPermissionGranted] = useState(false);
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Login = () => {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 if (stream) {
                     setPermissionGranted(true);
-                    setOutput('Microphone access granted. Say "email", "password", "name", "submit", or "login".');
+                    setOutput('Microphone access granted. Say 1.Email, 2.password, 3.name \n After filling Say Create for Signup or Submit for Login');
                 }
             } catch (err) {
                 setPermissionGranted(false);
@@ -35,7 +36,7 @@ const Login = () => {
 
     const handleSignUp = useCallback(async () => {
         if(!email||!password||!name){
-            setOutput('please enter all email ,password and name');
+            setOutput('please enter correct email ,password and name');
             return;
         }
         else if (!email.includes('@') || password.length < 6 || !name) {
@@ -85,20 +86,54 @@ const Login = () => {
         if (annyang && permissionGranted) {
             const commands = {
                 'email *emailValue': (emailValue) => {
-                    setEmail(emailValue.trim());
-                    setOutput(`Email set to: ${emailValue}`);
+                    let cleanedEmail = emailValue.trim();
+
+                    // Remove trailing period if present
+                    //if (cleanedEmail.endsWith('.')) {
+                        cleanedEmail = cleanedEmail.slice(0, -1);
+                    
+                
+                    setEmail(cleanedEmail);
+                    setOutput(`Email set to: ${cleanedEmail}`);
                 },
                 'e-mail *emailValue': (emailValue) => {
-                    setEmail(emailValue.trim());
-                    setOutput(`Email set to: ${emailValue}`);
+                    let cleanedEmail = emailValue.trim();
+
+                   // Remove trailing period if present
+                   ///if (cleanedEmail.endsWith('.')) {
+                       cleanedEmail = cleanedEmail.slice(0, -1);
+                   
+
+                  setEmail(cleanedEmail);
+                  setOutput(`Email set to: ${cleanedEmail}`);
+                },
+                'mail *emailValue': (emailValue) => {
+                    let cleanedEmail = emailValue.trim();
+
+                    // Remove trailing period if present
+                    //if (cleanedEmail.endsWith('.')) {
+                        cleanedEmail = cleanedEmail.slice(0, -1);
+                    
+                
+                    setEmail(cleanedEmail);
+                    setOutput(`Email set to: ${cleanedEmail}`);
                 },
                 'E-mail *emailValue': (emailValue) => {
-                    setEmail(emailValue.trim());
-                    setOutput(`Email set to: ${emailValue}`);
+                    let cleanedEmail = emailValue.trim();
+
+                    // Remove trailing period if present
+                    //if (cleanedEmail.endsWith('.')) {
+                        cleanedEmail = cleanedEmail.slice(0, -1);
+                   
+                
+                    setEmail(cleanedEmail);
+                    setOutput(`Email set to: ${cleanedEmail}`);
                 },
                 'Email *emailValue': (emailValue) => {
-                    setEmail(emailValue.trim());
-                    setOutput(`Email set to: ${emailValue}`);
+                    let cleanedEmail = emailValue.trim();
+                        cleanedEmail = cleanedEmail.slice(0, -1);
+                    setEmail(cleanedEmail);
+                    setOutput(`Email set to: ${cleanedEmail}`);
                 },
                 'password *passwordValue': (passwordValue) => {
                     setPassword(passwordValue.trim());
@@ -109,20 +144,26 @@ const Login = () => {
                     setOutput(`Name set to: ${nameValue}`);
                 },
                 'sign up.': () => {
-                    console.log("Voice command 'submit' detected");
-                    handleSubmit();
+                    console.log("Voice command 'toggle sign up' detected");
+                    setIsSignUp(true);
+                    setOutput('Switched to sign-up mode After filling Say Create.');
                 },
                 'Sign up.': () => {
-                    console.log("Voice command 'submit' detected");
-                    handleSubmit();
+                    console.log("Voice command 'toggle sign up' detected");
+                    setIsSignUp(true);
+                    setOutput('Switched to sign-up mode After filling Say Create.');
                 },
                 'Sign up': () => {
-                    console.log("Voice command 'submit' detected");
-                    handleSubmit();
+                    
+                    console.log("Voice command 'toggle sign up' detected");
+                    setIsSignUp(true);
+                    setOutput('Switched to sign-up mode After filling Say Create.');
                 },
+
                 'sign up': () => {
-                    console.log("Voice command 'submit' detected");
-                    handleSubmit();
+                    console.log("Voice command 'toggle sign up' detected");
+                    setIsSignUp(true);
+                    setOutput('Switched to sign-up mode After filling Say Create.');
                 },
                 'Submit': () => {
                     console.log("Voice command 'login' detected");
@@ -141,34 +182,32 @@ const Login = () => {
                     }
                 },
                 'create': () => {
-                    console.log("Voice command 'toggle sign up' detected");
-                    setIsSignUp(true);
-                    setOutput('Switched to sign-up mode.');
+                    console.log("Voice command 'submit' detected");
+                    handleSubmit();
                 },
                 'Create': () => {
-                    console.log("Voice command 'toggle sign up' detected");
-                    setIsSignUp(true);
-                    setOutput('Switched to sign-up mode.');
+                    console.log("Voice command 'submit' detected");
+                    handleSubmit();
+                    
                 },
                 'Create.': () => {
-                    console.log("Voice command 'toggle sign up' detected");
-                    setIsSignUp(true);
-                    setOutput('Switched to sign-up mode.');
+                    console.log("Voice command 'submit' detected");
+                    handleSubmit();
                 },
                 'Login.': () => {
                     setIsSignUp(false);
                     console.log("Voice command 'toggle login' detected");
-                    setOutput('Switched to login mode.');
+                    setOutput('Switched to login mode. After filling Say submit');
                },
                'Login': () => {
                 setIsSignUp(false);
                 console.log("Voice command 'toggle login' detected");
-                setOutput('Switched to login mode.');
+                setOutput('Switched to login mode.  After filling Say submit');
            },
                'login.': () => {
                     console.log("Voice command 'toggle login' detected");
                     setIsSignUp(false);
-                    setOutput('Switched to login mode.');
+                    setOutput('Switched to login mode. After filling Say submit');
                 }
             };
     
@@ -215,7 +254,7 @@ const Login = () => {
                         handleSubmit();
                     }}
                 >
-                    <div className="input-container">
+                    <div className="input-with-icon">
                         <i className="fa fa-envelope icon"></i>
                         <input
                             type="email"
@@ -225,18 +264,28 @@ const Login = () => {
                             required
                         />
                     </div>
+            
                     <div className="input-container">
-                        <i className="fa fa-lock icon"></i>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter your password"
-                            required
-                        />
-                    </div>
+    <i className="fa fa-lock icon"></i>
+    <div className="input-with-icon">
+    <i className="fa fa-lock icon"></i>
+        <input
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            required
+        />
+        <i 
+            className={`fa ${showPassword ? 'fa-eye-slash' : 'fa-eye'} password-toggle-icon`}
+            onClick={() => setShowPassword(!showPassword)}
+            style={{ cursor: 'pointer' }}
+        />
+    </div>
+</div>
+
                     {isSignUp && (
-                        <div className="input-container">
+                        <div className="input-with-icon">
                             <i className="fa fa-user icon"></i>
                             <input
                                 type="text"
@@ -252,9 +301,9 @@ const Login = () => {
 
                 <div className="toggle-mode">
                     {isSignUp ? (
-                        <p>Already have an account? <button onClick={() => setIsSignUp(false)}>Login</button></p>
+                        <p>Already have an account? Say Login <button onClick={() => setIsSignUp(false)}>Login</button></p>
                     ) : (
-                        <p>Don't have an account? <button onClick={() => setIsSignUp(true)}>Sign Up</button></p>
+                        <p>Don't have an account? Say Signup <button onClick={() => setIsSignUp(true)}>Sign Up</button></p>
                     )}
                 </div>
             </div>
