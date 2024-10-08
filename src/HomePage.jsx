@@ -16,7 +16,7 @@ const Homepage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(false);
-    }, 2000); // Popup will disappear after 2 seconds
+    }, 3000); // Popup will disappear after 3 seconds
 
     return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
@@ -31,20 +31,41 @@ const Homepage = () => {
 
       {/* Main Cards Section */}
       <section className="section">
-        <Card animationData={animationtech} title="Tech Help" />
-        <Card animationData={animationData} title="Scam Prevention" />
-        <Card animationData={animationtuto} title="Live Tutorials" />
+        <Card 
+          animationData={animationtech} 
+          title="Tech Help" 
+          description="Get expert assistance with your tech-related questions and device setup." 
+        />
+        <Card 
+          animationData={animationData} 
+          title="Scam Prevention" 
+          description="Learn essential strategies to ensure a safe and healthy living environment for seniors." 
+        />
+        <Card 
+          animationData={animationtuto} 
+          title="Live Tutorials" 
+          description="Join interactive sessions to learn new skills in real-time with expert guidance." 
+        />
       </section>
 
       {/* Latest Articles & Vlogs Section */}
       <div className='Headings'>
-      <h2> Related Articles and Blogs</h2>
+        <h2>Related Articles and Blogs</h2>
       </div>
       
       <section className="section">
-        <Card title="Understanding Tech" />
-        <Card title="Common Scams" />
-        <Card title="Mastering Online Banking" />
+        <Card 
+          title="Understanding Tech" 
+          description="A comprehensive guide to understanding modern technology." 
+        />
+        <Card 
+          title="Common Scams" 
+          description="Learn about the most common scams and how to avoid them." 
+        />
+        <Card 
+          title="Mastering Online Banking" 
+          description="Tips and tricks to efficiently manage your online banking." 
+        />
       </section>
 
       {/* Footer Section */}
