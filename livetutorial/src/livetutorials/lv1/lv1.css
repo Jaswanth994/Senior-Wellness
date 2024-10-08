@@ -1,163 +1,311 @@
-/* General Styling */
-body, html {
+/* Reset and Base Styling */
+* {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
-  background-color: #f0f0f0;
-  color: black;
-  width: 100%; /* Ensure full width */
   box-sizing: border-box;
 }
 
-.guide-container {
-  width: 90%; /* Fill 90% of the screen width */
-  max-width: 1200px; /* Limit to a max width for readability on large screens */
+body, html {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  background-color: white;
+}
+
+/* Guide Container */
+.guide-container {
+  background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Center text in the container */
-  position: relative; /* Ensure positioning for child elements */
-  color: black;
-  box-sizing: border-box; /* Make sure padding is included in the element width */
+  padding: 30px;
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  position: relative;
 }
 
+/* Title Styling */
+.guide-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+/* Image and Animation Container */
 .image-container {
-  position: relative; /* Enable absolute positioning for elements inside */
-  display: inline-block; /* Align the image centrally */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
+/* Animation Container */
+.animation-container {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 200px;
+}
+
+.animation-container .player {
+  width: 100%;
+  height: 100%;
+}
+
+/* Step Image Styling */
 .step-image {
-  width: 230px; /* Responsive width */
+  width: 100%;
+  max-width: 600px;
   height: auto;
-  border-radius: 2rem; /* Rounded corners for the image */
+  border-radius: 1rem;
+  position: relative;
 }
 
+/* Highlight Box Styling */
 .highlight-box {
-  position: absolute; /* Position relative to the image container */
-  border: 2px solid rgba(255, 0, 0, 0.7); /* Red border for highlighting */
-  background: rgba(255, 255, 255, 0.2); /* Light transparent background */
-  pointer-events: auto; /* Enable interaction */
-  z-index: 1; /* Ensure highlight appears above the image */
-  cursor: pointer; /* Pointer cursor */
+  position: absolute;
+  border: 3px solid rgba(255, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
+.highlight-box:hover {
+  transform: scale(1.05);
+}
+
+/* Arrow Styling */
 .arrow {
-  position: absolute; /* Position relative to the image */
-  width: 0;
-  height: 0;
-  z-index: 2; /* Ensure arrow appears above other elements */
+  position: absolute;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
 }
 
-/* Arrow Styling for Direction */
-.arrow-up {
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid rgba(255, 0, 0, 0.7); /* Red arrow pointing upwards */
-  top: 40%;
-  left: 50%;
-  transform: translateX(-50%);
+.arrow svg {
+  width: 100%;
+  height: 100%;
 }
 
-.arrow-right {
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid rgba(255, 0, 0, 0.7); /* Red arrow pointing right */
-  top: 50%;
-  left: 40%;
-  transform: translateY(-50%);
+/* Info Tooltip Styling */
+.arrow .motion-div {
+  position: absolute;
+  top: 12px;
+  left: 60px;
+  background-color: rgba(255, 255, 0, 0.9);
+  color: #000;
+  padding: 8px 12px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  font-size: 1rem;
 }
 
-.arrow-left {
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid rgba(255, 0, 0, 0.7); /* Red arrow pointing left */
-  top: 50%;
-  left: 60%;
-  transform: translateY(-50%);
+/* Description and Info Text */
+.guide-container p {
+  font-size: 1.2rem;
+  margin: 15px 0;
 }
 
-/* Navigation Buttons Styling */
+.info-text {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Button Container */
 .button-container {
-  margin-top: 20px; /* Space above the buttons */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .button-container button {
-  margin: 0 10px; /* Space between buttons */
-  padding: 10px 20px;
-  font-size: 16px; /* Button font size */
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  border: none; /* Remove default border */
-  border-radius: 5px; /* Rounded button corners */
-  transition: background-color 0.3s; /* Smooth transition on hover */
+  transition: background-color 0.3s;
+  min-width: 120px;
 }
 
-.prev-button {
-  background-color: #007bff; /* Primary blue button */
-  color: white;
-}
-
-.replay-button {
-  background-color: #007bff; /* Primary blue button */
-  color: white;
-}
-
-.next-button {
-  background-color: #007bff; /* Primary blue button */
-  color: white;
+.prev-button,
+.replay-button,
+.next-button,
+.speak-button {
+  background-color: #007bff;
+  color: #fff;
 }
 
 .prev-button:disabled,
 .next-button:disabled {
-  background-color: #a9a9a9; /* Disabled state gray */
-  cursor: not-allowed; /* Change cursor for disabled buttons */
-}
-
-.next-button:disabled::after {
-  content: ' ✓'; /* Check mark on completion */
-  color: white;
-  font-weight: bold;
-  margin-left: 5px;
+  background-color: #a9a9a9;
+  cursor: not-allowed;
 }
 
 .prev-button:hover:not(:disabled),
 .next-button:hover:not(:disabled),
-.replay-button:hover:not(:disabled) {
-  background-color: #0056b3; /* Darker blue on hover */
+.replay-button:hover:not(:disabled),
+.speak-button:hover:not(:disabled) {
+  background-color: #0056b3;
 }
 
-/* Speak Button Styling */
 .speak-button {
-  background-color: #4caf50; /* Green background for Speak button */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 5px;
-  transition: background-color 0.3s;
+  background-color: #28a745;
 }
 
-.speak-button:disabled {
-  background-color: #ccc; /* Disabled state gray */
-  cursor: not-allowed; /* Not allowed cursor for disabled button */
+.speak-button:hover {
+  background-color: #1e7e34;
 }
 
-/* Image and Animation Layout */
-.image-and-animation-container {
-  display: flex; /* Align image and animation side by side */
-  justify-content: space-between; /* Space between image and animation */
-  align-items: center; /* Center items vertically */
+/* Responsive Design */
+
+/* Tablets and Small Desktops */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .guide-container {
+    padding: 25px;
+  }
+
+  .guide-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .image-container {
+    gap: 15px;
+  }
+
+  .animation-container {
+    width: 180px;
+    height: 180px;
+  }
+
+  .arrow .motion-div {
+    font-size: 0.95rem;
+    padding: 7px 10px;
+  }
+
+  .guide-container p {
+    font-size: 1.1rem;
+  }
+
+  .info-text {
+    font-size: 1rem;
+  }
+
+  .button-container button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    min-width: 110px;
+  }
 }
 
-/* Arrow Hover Animation */
-.big-arrow {
-  transition: transform 0.3s ease-in-out;
+/* Mobile Devices */
+@media (max-width: 599px) {
+  .guide-container {
+    padding: 20px;
+  }
+
+  .guide-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .image-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .animation-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .step-image {
+    max-width: 100%;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrow .motion-div {
+    top: 10px;
+    left: 50px;
+    font-size: 0.9rem;
+    padding: 6px 8px;
+  }
+
+  .guide-container p {
+    font-size: 1rem;
+  }
+
+  .info-text {
+    font-size: 0.95rem;
+  }
+
+  .button-container button {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+
+  .arrow svg {
+    width: 100%;
+    height: 100%;
+  }
 }
 
-.big-arrow:hover {
-  transform: rotate(180deg); /* Rotate on hover */
+/* Large Desktops */
+@media (min-width: 1025px) {
+  .guide-container {
+    padding: 40px;
+  }
+
+  .guide-container h2 {
+    font-size: 2.5rem;
+  }
+
+  .image-container {
+    gap: 30px;
+  }
+
+  .animation-container {
+    width: 220px;
+    height: 220px;
+  }
+
+  .arrow {
+    width: 60px;
+    height: 60px;
+  }
+
+  .arrow .motion-div {
+    font-size: 1.1rem;
+    padding: 10px 14px;
+  }
+
+  .guide-container p {
+    font-size: 1.3rem;
+  }
+
+  .info-text {
+    font-size: 1.1rem;
+  }
+
+  .button-container button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    min-width: 140px;
+  }
 }

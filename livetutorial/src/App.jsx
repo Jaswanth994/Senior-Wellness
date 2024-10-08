@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import LocationSharingGuide from './livetutorials/lv1/lv1'; // Import the guide
 import MapsGuide from './livetutorials/lv2/lv2';
+import Ringtone from './livetutorials/lv3/lv3';
 import './App.css';
 
 const App = () => {
@@ -28,7 +29,7 @@ const App = () => {
                     <option value="">Select an option</option>
                     <option value="location-guide">WhatsApp Location Sharing Guide</option> 
                     <option value="maps-guide">Location Guide</option>
-                    <option value="option3">Other Option 3</option>
+                    <option value="ring">Setting Ringtone for calls</option>
                 </select>
                 <button type="submit">Go</button>
             </form>
@@ -42,6 +43,7 @@ const Main = () => (
             <Route path="/" element={<App />} />
             <Route path="/option/location-guide" element={<LocationSharingGuide />} />
             <Route path="/option/maps-guide" element={<MapsGuide />} />
+            <Route path="/option/ring" element={<Ringtone />} />
             {/* Define other routes here if necessary */}
         </Routes>
     </Router>
