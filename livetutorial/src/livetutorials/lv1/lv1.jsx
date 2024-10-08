@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Player } from "@lottiefiles/react-lottie-player";
 import './lv1.css';
 
 // Import images
@@ -15,8 +14,6 @@ import step6 from './images/final.jpg';
 // Import sounds
 import hoverSoundPath from '../sounds/hover.mp3';
 import clickSoundPath from '../sounds/click-button.mp3';
-
-import womanAnimation from '../animations/woman.json';
 
 const steps = [
   {
@@ -63,7 +60,7 @@ const steps = [
   },
 ];
 
-/*const LocationSharingGuide = () => {
+const LocationSharingGuide = () => {
   const { option } = useParams();
   const navigate = useNavigate(); // For navigation
   const [currentStep, setCurrentStep] = useState(0);
@@ -71,6 +68,9 @@ const steps = [
 
   const hoverAudio = new Audio(hoverSoundPath);
   const clickAudio = new Audio(clickSoundPath);
+  
+  // Create a ref for the speech synthesis utterance
+  const utteranceRef = useRef(null);
 
   const initializeAudio = () => {
     hoverAudio.load();
@@ -101,8 +101,7 @@ const steps = [
     if (currentStep < steps.length - 1) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
-      // Navigate back to the options page after completing all steps
-      navigate(`/`); // Updated path
+      navigate(`/`); // Navigate back to options page
     }
   };
 
@@ -117,7 +116,12 @@ const steps = [
   };
 
   const speakText = (text) => {
+    // Stop any previous utterance
+    if (utteranceRef.current) {
+      speechSynthesis.cancel();
+    }
     const utterance = new SpeechSynthesisUtterance(text);
+    utteranceRef.current = utterance; // Store the current utterance in the ref
     speechSynthesis.speak(utterance);
   };
 
@@ -128,8 +132,9 @@ const steps = [
     speakText(info); // Speak the info text whenever the step changes
     return () => {
       window.removeEventListener('click', initializeAudio);
+      speechSynthesis.cancel(); // Stop any ongoing speech synthesis when unmounting
     };
-  }, [currentStep]); // Add currentStep to the dependency array to call speakText whenever the step changes
+  }, [currentStep]); // Call speakText when currentStep changes
 
   return (
     <div className="guide-container">
@@ -227,6 +232,14 @@ const steps = [
           Previous
         </motion.button>
         <motion.button
+          className="next-button"
+          onClick={handleNext}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+        >
+          {currentStep < steps.length - 1 ? 'Next' : 'Finish'}
+        </motion.button>
+        <motion.button
           className="replay-button"
           onClick={handleReplay}
           whileHover={{ scale: 1.05 }}
@@ -234,15 +247,6 @@ const steps = [
         >
           Replay
         </motion.button>
-        <motion.button
-          className="next-button"
-          onClick={handleNext}
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
-          {currentStep === steps.length - 1 ? 'Return to Options' : 'Next'}
-        </motion.button>
-
         <motion.button
           className="speak-button"
           onClick={() => speakText(info)}
@@ -256,9 +260,10 @@ const steps = [
   );
 };
 
-export default LocationSharingGuide;*/
+export default LocationSharingGuide;
 
-const LocationSharingGuide = () => {
+
+/*const LocationSharingGuide = () => {
   const { option } = useParams();
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
@@ -406,7 +411,7 @@ const LocationSharingGuide = () => {
           </motion.div>
         </div>
 
-        {/* Lottie Animation Player */}
+        
         <div className="animation-container">
           <Player
             autoplay
@@ -460,4 +465,4 @@ const LocationSharingGuide = () => {
   );
 };
 
-export default LocationSharingGuide;
+export default LocationSharingGuide;*/

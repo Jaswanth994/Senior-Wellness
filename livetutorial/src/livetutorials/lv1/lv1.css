@@ -142,7 +142,7 @@ body, html {
 /* Responsive Design for Small Screens */
 @media (max-width: 600px) {
   body, html {
-    overflow: hidden; /* Add overflow hidden to prevent horizontal scrolling */
+    overflow: none; /* Add overflow hidden to prevent horizontal scrolling */
   }
 
   .guide-container {
@@ -165,7 +165,7 @@ body, html {
 
   .speak-button {
     padding: 6px 12px;
-    font-size: 12px;
+    font-size: 10px;
   }
 
   /* Adjust arrows for small screens */
@@ -179,7 +179,7 @@ body, html {
 /* Responsive Design for Tablets */
 @media (min-width: 600px) and (max-width: 1024px) {
   body, html {
-    overflow: hidden; /* Add overflow hidden to prevent horizontal scrolling */
+    overflow: none; /* Add overflow hidden to prevent horizontal scrolling */
   }
 
   .guide-container {
