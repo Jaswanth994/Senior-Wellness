@@ -1,150 +1,100 @@
-/* Reset and Base Styling */
-* {
+/* General Styling */
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  width: 100%;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  min-height: 100vh; /* Full viewport height */
+  width: 100vw;
+  background-color: #f0f0f0;
+  color: black;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-/* Guide Container */
 .guide-container {
-  background-color: #fff;
+  width: 90%; /* Adjusts width for smaller screens */
+  max-width: 1200px; /* Limit width for larger screens */
+  padding: 20px;
+  background-color: white;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  max-width: 1200px;
-  width: 100%;
   text-align: center;
   position: relative;
+  box-sizing: border-box;
+  margin: 20px 0;
 }
 
-/* Title Styling */
-.guide-container h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #007bff;
-}
-
-/* Image and Animation Container */
+/* Image and Highlight Box */
 .image-container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 20px;
   position: relative;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+  display: inline-block;
+  max-width: 100%; /* Ensure image doesn't overflow */
 }
 
-/* Animation Container */
-.animation-container {
-  flex: 0 0 auto;
-  width: 200px;
-  height: 200px;
-}
-
-.animation-container .player {
-  width: 100%;
-  height: 100%;
-}
-
-/* Step Image Styling */
 .step-image {
-  width: 100%;
-  max-width: 600px;
+  width: 100%; /* Make image responsive */
   height: auto;
-  border-radius: 1rem;
-  position: relative;
+  border-radius: 1rem; /* Adjusted for smaller screens */
 }
 
-/* Highlight Box Styling */
 .highlight-box {
   position: absolute;
-  border: 3px solid rgba(255, 0, 0, 0.8);
-  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.2);
+  pointer-events: auto;
+  z-index: 1;
   cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.highlight-box:hover {
-  transform: scale(1.05);
 }
 
 /* Arrow Styling */
 .arrow {
   position: absolute;
   z-index: 2;
-  width: 50px;
-  height: 50px;
+  width: 0;
+  height: 0;
 }
 
-.arrow svg {
-  width: 100%;
-  height: 100%;
+/* Arrow Styling for Different Directions */
+.arrow-up {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgba(255, 0, 0, 0.7);
 }
 
-/* Info Tooltip Styling */
-.arrow .motion-div {
-  position: absolute;
-  top: 12px;
-  left: 60px;
-  background-color: rgba(255, 255, 0, 0.9);
-  color: #000;
-  padding: 8px 12px;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
-  font-size: 1rem;
+.arrow-right {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(255, 0, 0, 0.7);
 }
 
-/* Description and Info Text */
-.guide-container p {
-  font-size: 1.2rem;
-  margin: 15px 0;
+.arrow-left {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid rgba(255, 0, 0, 0.7);
 }
 
-.info-text {
-  font-size: 1.1rem;
-  color: #555;
-}
-
-/* Button Container */
+/* Button Container Styling */
 .button-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
   margin-top: 20px;
 }
 
 .button-container button {
-  padding: 12px 24px;
-  font-size: 1rem;
+  margin: 10px 5px;
+  padding: 8px 16px;
+  font-size: 14px; /* Smaller font size for small screens */
+  cursor: pointer;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s;
-  min-width: 120px;
 }
 
 .prev-button,
 .replay-button,
-.next-button,
-.speak-button {
+.next-button {
   background-color: #007bff;
-  color: #fff;
+  color: white;
 }
 
 .prev-button:disabled,
@@ -153,159 +103,122 @@ body, html {
   cursor: not-allowed;
 }
 
+.next-button:disabled::after {
+  content: ' ✓';
+  color: white;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
 .prev-button:hover:not(:disabled),
 .next-button:hover:not(:disabled),
-.replay-button:hover:not(:disabled),
-.speak-button:hover:not(:disabled) {
+.replay-button:hover:not(:disabled) {
   background-color: #0056b3;
 }
 
 .speak-button {
-  background-color: #28a745;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: background-color 0.3s;
 }
 
-.speak-button:hover {
-  background-color: #1e7e34;
+.speak-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
-/* Responsive Design */
+/* Layout for Image and Arrow Container */
+.image-and-animation-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-/* Tablets and Small Desktops */
-@media (min-width: 600px) and (max-width: 1024px) {
+/* Responsive Design for Small Screens */
+@media (max-width: 600px) {
+  body, html {
+    overflow: hidden; /* Add overflow hidden to prevent horizontal scrolling */
+  }
+
   .guide-container {
-    padding: 25px;
+    padding: 15px;
+    border-radius: 0.75rem;
   }
 
-  .guide-container h2 {
-    font-size: 1.8rem;
+  .step-image {
+    width: 100%; /* Full width for small screens */
   }
 
-  .image-container {
-    gap: 15px;
+  .highlight-box {
+    border-width: 1.5px;
   }
 
-  .animation-container {
-    width: 180px;
-    height: 180px;
+  .button-container button {
+    padding: 6px 12px;
+    font-size: 12px; /* Smaller font size */
   }
 
-  .arrow .motion-div {
-    font-size: 0.95rem;
-    padding: 7px 10px;
+  .speak-button {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 
-  .guide-container p {
-    font-size: 1.1rem;
+  /* Adjust arrows for small screens */
+  .arrow {
+    width: 0;
+    height: 0;
+    border-width: 6px;
+  }
+}
+
+/* Responsive Design for Tablets */
+@media (min-width: 600px) and (max-width: 1024px) {
+  body, html {
+    overflow: hidden; /* Add overflow hidden to prevent horizontal scrolling */
   }
 
-  .info-text {
-    font-size: 1rem;
+  .guide-container {
+    padding: 10px;
+    border-radius: 1rem;
+  }
+
+  .step-image {
+    width: 90%; /* Slightly smaller on tablets */
+  }
+
+  .button-container button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .speak-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Larger Screens (Desktops) */
+@media (min-width: 1024px) {
+  .guide-container {
+    padding: 30px;
+  }
+
+  .step-image {
+    width: 80%; /* Keep a larger image size */
   }
 
   .button-container button {
     padding: 10px 20px;
-    font-size: 0.95rem;
-    min-width: 110px;
-  }
-}
-
-/* Mobile Devices */
-@media (max-width: 599px) {
-  .guide-container {
-    padding: 20px;
+    font-size: 16px;
   }
 
-  .guide-container h2 {
-    font-size: 1.5rem;
-  }
-
-  .image-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .animation-container {
-    width: 150px;
-    height: 150px;
-  }
-
-  .step-image {
-    max-width: 100%;
-  }
-
-  .arrow {
-    width: 40px;
-    height: 40px;
-  }
-
-  .arrow .motion-div {
-    top: 10px;
-    left: 50px;
-    font-size: 0.9rem;
-    padding: 6px 8px;
-  }
-
-  .guide-container p {
-    font-size: 1rem;
-  }
-
-  .info-text {
-    font-size: 0.95rem;
-  }
-
-  .button-container button {
-    padding: 10px 18px;
-    font-size: 0.9rem;
-    min-width: 100px;
-  }
-
-  .arrow svg {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-/* Large Desktops */
-@media (min-width: 1025px) {
-  .guide-container {
-    padding: 40px;
-  }
-
-  .guide-container h2 {
-    font-size: 2.5rem;
-  }
-
-  .image-container {
-    gap: 30px;
-  }
-
-  .animation-container {
-    width: 220px;
-    height: 220px;
-  }
-
-  .arrow {
-    width: 60px;
-    height: 60px;
-  }
-
-  .arrow .motion-div {
-    font-size: 1.1rem;
-    padding: 10px 14px;
-  }
-
-  .guide-container p {
-    font-size: 1.3rem;
-  }
-
-  .info-text {
-    font-size: 1.1rem;
-  }
-
-  .button-container button {
-    padding: 14px 28px;
-    font-size: 1.1rem;
-    min-width: 140px;
+  .speak-button {
+    padding: 10px 20px;
+    font-size: 16px;
   }
 }
