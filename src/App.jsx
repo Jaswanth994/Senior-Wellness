@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import LocationSharingGuide from './livetutorials/lv1/lv1'; // Import the guide
+import MapsGuide from './livetutorials/lv2/lv2';
+import Ringtone from './livetutorials/lv3/lv3';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    const [selectedOption, setSelectedOption] = useState('');
+    const navigate = useNavigate();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    const handleChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
 
-export default App
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (selectedOption) {
+            navigate(`/option/${selectedOption}`);  // Programmatic navigation
+            setSelectedOption('');  // Reset selected option after navigation
+        }
+    };
+
+    return (
+        <div className="container">
+            <h1>Select an Option</h1>
+            <form onSubmit={handleSubmit}>
+                <select value={selectedOption} onChange={handleChange}>
+                    <option value="">Select an option</option>
+                    <option value="location-guide">WhatsApp Location Sharing Guide</option> 
+                    <option value="maps-guide">Location Guide</option>
+                    <option value="ring">Setting Ringtone for calls</option>
+                </select>
+                <button type="submit">Go</button>
+            </form>
+        </div>
+    );
+};
+
+const Main = () => (
+    <Router>
+        <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/option/location-guide" element={<LocationSharingGuide />} />
+            <Route path="/option/maps-guide" element={<MapsGuide />} />
+            <Route path="/option/ring" element={<Ringtone />} />
+            {/* Define other routes here if necessary */}
+        </Routes>
+    </Router>
+);
+
+export default Main;
