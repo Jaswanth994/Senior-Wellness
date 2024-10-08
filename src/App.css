@@ -10,17 +10,17 @@ html, body {
 }
 
 /* Shared Styles for Containers */
-.container {
-  background-color: rgba(255, 255, 255, 0.95); /* Slightly more opaque */
+/* .container {
+  background-color: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   padding: 2rem;
   max-width: 800px;
   width: 100%;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Floating effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
   margin-top: 50px;
   animation: fadeInUp 1s ease-in-out;
   text-align: center;
-}
+} */
 
 
 *,

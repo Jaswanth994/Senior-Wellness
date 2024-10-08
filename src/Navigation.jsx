@@ -9,7 +9,6 @@ const Navigation = () => {
       <Link to="/">Home</Link>
       <Link to="/login">Login</Link>
       <Link to="/profile">Profile</Link>
-      <Link to="/helloworld">HelloWorld</Link>
     </nav>
   );
 };

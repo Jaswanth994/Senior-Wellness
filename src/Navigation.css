@@ -1,6 +1,8 @@
 /* Navigation Styles (Navigation.css) */
 .nav {
     display: flex;
+    padding: 12px 20px;
+    padding-right: 30px;
   }
   
   .nav a {

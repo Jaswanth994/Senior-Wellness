@@ -10,11 +10,6 @@
   width: 100%;
 }
 
-.hero h2 {
-  color: black;
-  font-size: 1.6rem;
-}
-
 .Hero-container {
   margin-top: 5px;
   background-color: #fafafa;
@@ -32,5 +27,5 @@
   border-radius: 10px; /* Optional: round the corners */
   object-fit: cover; /* Ensure the image covers the container */
   object-position: top; /* Align the image to the top */
-  margin-top: 0px; /* Optional: spacing above the image */
+  margin-top: 50px; /* Optional: spacing above the image */
 }

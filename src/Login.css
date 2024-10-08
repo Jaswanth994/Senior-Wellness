@@ -32,7 +32,7 @@
     background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for the login box */
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    padding: 40px;
+    padding: 50px;
     width: 590px;
     text-align: center;
 }
@@ -43,6 +43,7 @@
 .input-container {
     position: relative;
     margin-bottom: 25px;
+    width: 95%;
 }
 
 /* Icon styles */
