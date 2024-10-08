@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-around;
     padding: 40px 0;
-    background-color: white;
+    background-color: #fafafa;
     width: 100%;
     flex-wrap: wrap;
   }
@@ -33,12 +33,18 @@
   
   .card img {
     width: 50px;
-    height: 50px;
+    height: 500px;
   }
   
   .card h3 {
     margin: 10px 0;
     color: #004d40;
     font-size: 1.5rem;
+  }
+  
+  .lolottieanimation{
+    text-align: center;
+    width: 150;
+    height: 150
   }
   

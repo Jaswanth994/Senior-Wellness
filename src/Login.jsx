@@ -51,7 +51,7 @@ const Login = () => {
             });
 
             setOutput('User signed up successfully!');
-            navigate(`/helloworld?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`);
+            navigate(`/HomePage?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`);
         } catch (error) {
             setOutput(`Error signing up: ${error.message}`);
         }
@@ -67,7 +67,7 @@ const Login = () => {
             console.log("came")
             await signInWithEmailAndPassword(auth, email, password);
             setOutput('Login successful!');
-            navigate(`/HelloWorld?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`);
+            navigate(`/HomePage?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`);
         } catch (error) {
             setOutput(`Login failed: ${error.message}`);
         }

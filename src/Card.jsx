@@ -5,10 +5,11 @@ import './Card.css'; // Import Header styles
 const Card = ({ animationData, title }) => {
   return (
     <div className="card">
+      <div className="lottieanimation">
       <Lottie
         animationData={animationData}
-        style={{ width: 150, height: 150 }} // Adjust size as needed
       />
+      </div>
       <h3>{title}</h3>
     </div>
   );
