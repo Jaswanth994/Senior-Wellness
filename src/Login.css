@@ -115,3 +115,36 @@ button:hover {
     color: #555;
 }
 
+/* #for speech */
+/* Add these styles to your CSS file or within a <style> tag */
+.speak-toggle-container {
+    display: flex;    
+              /* Use flexbox for alignment */
+              margin-top: 10px;
+    align-items: center;       /* Center items vertically */
+    margin-top: 30px;       /* Space below the container */
+}
+
+.speak-toggle-checkbox {
+    margin-bottom: 10px;       /* Space below the checkbox */
+    transform: scale(2);       /* Increase checkbox size */
+    cursor: pointer;           /* Change cursor to pointer */
+    transition: transform 0.2s; /* Smooth scaling transition */
+}
+
+.speak-toggle-checkbox:hover {
+    transform: scale(2.2);     /* Slightly enlarge on hover for effect */
+}
+
+.speak-toggle-label {
+    margin-right: 50%;          /* Reduced margin for minimal space between checkbox and label */
+    line-height: 1;            /* Adjust line height for better centering */
+    font-size: 16px;           /* Font size for the label */
+    color: #333;               /* Dark color for text */
+    transition: color 0.2s;    /* Smooth color transition */
+}
+
+.speak-toggle-label:hover {
+    color: #007BFF;            /* Change text color on hover */
+    cursor: pointer;           /* Change cursor to pointer on hover */
+}

@@ -16,8 +16,8 @@ const Login = () => {
     const [permissionGranted, setPermissionGranted] = useState(false);
     const navigate = useNavigate();
     const auth = getAuth();
-
-    // Request microphone permission on mount
+    
+    // Request microphone permission on mount    
     useEffect(() => {
         const requestMicrophonePermission = async () => {
             try {
@@ -307,7 +307,7 @@ const Login = () => {
                     )}
                 </div>
             </div>
-        </div>
+             </div>
     );
 };
 

@@ -6,6 +6,8 @@ import { getAuth } from 'firebase/auth'; // Import getAuth from Firebase Auth
 
 
 const Profile = () => {
+
+
     //const queryParams = useQuery();
     //const emailQuery = queryParams.get('email'); // Optional, you can remove this if you don't use it
     const [email, setEmail] = useState('');
@@ -13,7 +15,64 @@ const Profile = () => {
     const [password, setPassword] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
-
+    const speed = 0.5;
+    const [isSpeakingEnabled, setIsSpeakingEnabled] = useState(false); // Control speaking
+    const utteranceRef = useRef(new SpeechSynthesisUtterance());
+    const speakingRef = useRef(false);
+  
+    useEffect(() => {
+      const handleMouseOver = (e) => {
+        if (!isSpeakingEnabled) return;
+  
+        const mousePos = document.caretRangeFromPoint(e.clientX, e.clientY);
+        if (mousePos && mousePos.startContainer.nodeType === Node.TEXT_NODE) {
+          const textNode = mousePos.startContainer;
+          const offset = mousePos.startOffset;
+  
+          const word = extractWord(textNode.textContent, offset);
+          if (word && !speakingRef.current) {
+            speakingRef.current = true;
+            speakText(word);
+          }
+        }
+      };
+  
+      document.addEventListener('mousemove', handleMouseOver);
+      return () => {
+        document.removeEventListener('mousemove', handleMouseOver);
+      };
+    }, [isSpeakingEnabled]);
+  
+    const extractWord = (text, offset) => {
+      const beforeText = text.slice(0, offset);
+      const afterText = text.slice(offset);
+  
+      const wordStart = beforeText.match(/\S+$/); // Match non-space characters before the offset
+      const wordEnd = afterText.match(/^\S+/); // Match non-space characters after the offset
+  
+      const word = (wordStart ? wordStart[0] : '') + (wordEnd ? wordEnd[0] : '');
+      return word.trim(); 
+    };
+  
+    const speakText = (text) => {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel(); 
+      }
+  
+      utteranceRef.current.text = text;
+      utteranceRef.current.rate = speed;
+  
+      utteranceRef.current.onend = () => {
+        speakingRef.current = false; 
+      };
+  
+      speechSynthesis.speak(utteranceRef.current);
+    };
+  
+    const handleSpeakingToggle = () => {
+      setIsSpeakingEnabled(!isSpeakingEnabled);
+    };
+  
     // Fetch user data from Firebase when the component mounts
     useEffect(() => {
         const auth = getAuth();
