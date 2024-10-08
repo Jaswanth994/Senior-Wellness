@@ -1,0 +1,123 @@
+/* Global background */
+body {
+    background-color: #ededed; /* Darker Warm Gray background */
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  /* Quiz container styling */
+  .quiz-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly more opaque for better contrast */
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%; /* Ensure responsiveness */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for floating effect */
+    margin-top: 50px; /* Space below the heading */
+    animation: fadeInUp 1s ease-in-out;
+    text-align: center; /* Center the content */
+  }
+  
+  /* Question heading */
+  .question-heading {
+    color: #2C3E50; /* Dark Slate Blue */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Question text styling */
+  .question-text {
+    color: #333333; /* Charcoal Gray for readability */
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Options styling */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between options */
+  }
+  
+  .option {
+    background-color: #FFFFFF; /* White background */
+    color: #333333; /* Charcoal text */
+    padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1.5rem;
+    border: 2px solid transparent;
+  }
+  
+  .option:hover {
+    background-color: #EAF3FA; /* Light Blue Tint on hover */
+    transform: scale(1.05); /* Slight zoom */
+  }
+  
+  .option.correct {
+    background-color: #4CAF50; /* Green for correct answers */
+    color: white;
+  }
+  
+  .option.incorrect {
+    background-color: #F44336; /* Red for incorrect answers */
+    color: white;
+  }
+  
+  /* Button for next question */
+  .btn-primary {
+    background-color: #F5A623; /* Warm Yellow */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #FFCC33; /* Brighter yellow */
+    transform: scale(1.1);
+  }
+  
+  /* Alert box */
+  .alert {
+    background-color: #EAF3FA; /* Light Blue Tint */
+    color: #2C3E50; /* Dark Slate Blue text */
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Animation for fade-in effect */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .btn-primary {
+      font-size: 1.2rem;
+      padding: 12px 24px;
+    }
+  
+    .option {
+      font-size: 1.2rem;
+    }
+  }
+  

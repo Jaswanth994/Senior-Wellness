@@ -1,0 +1,84 @@
+/* Global background */
+body {
+    background-color: #ededed; /* Darker Warm Gray background */
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Results container */
+  .results-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly opaque */
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%; /* Responsive design */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    text-align: center;
+    animation: fadeInUp 1s ease-in-out;
+  }
+  
+  /* Results heading */
+  h2 {
+    font-size: 2.5rem;
+    color: #2C3E50; /* Dark Slate Blue */
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Score display */
+  p {
+    font-size: 1.8rem;
+    color: #333333; /* Charcoal Gray for readability */
+    margin-bottom: 2rem;
+  }
+  
+  /* Back to home button */
+  .btn-primary {
+    background-color: #F5A623; /* Warm Yellow */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #FFCC33; /* Brighter yellow */
+    transform: scale(1.1);
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 2rem;
+    }
+  
+    p {
+      font-size: 1.5rem;
+    }
+  
+    .btn-primary {
+      font-size: 1.2rem;
+      padding: 12px 24px;
+    }
+  }
+  

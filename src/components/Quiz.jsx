@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import './Quizz.css';
 const questions = [
   { question: "Where can you find the 'Help' section in an app?", options: ["Main menu", "Profile section", "At the bottom of the screen", "In the settings"], correct: 3 },
   { question: "How do you search for something in an app?", options: ["Look for it on the home screen", "Use the search bar at the top", "Ask someone for help", "Open every menu"], correct: 1 },
