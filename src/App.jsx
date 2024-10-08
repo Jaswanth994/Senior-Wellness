@@ -8,6 +8,12 @@ import HelloWorld from './Home';  // HelloWorld component
 import Navigation from './Navigation';  // Navigation component
 import './App.css';  // Global styles
 
+import Home from './components/Home.jsx';
+import Quiz from './components/Quiz.jsx';
+import Results from './components/Results.jsx';
+import ArticlePage from './components/articelpage.jsx'; //
+
+
 function App() {
   return (
     <div className="App">
@@ -21,7 +27,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/helloworld" element={<HelloWorld />} />
-        
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/results" element={<Results />} />
+        <Route path="/article-page" element={<ArticlePage />} />
         {/* If users go to an undefined route, you can redirect them */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

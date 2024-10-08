@@ -4,9 +4,24 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: Arial, sans-serif;
-  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  display: flex;
 }
+
+/* Shared Styles for Containers */
+.container {
+  background-color: rgba(255, 255, 255, 0.95); /* Slightly more opaque */
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Floating effect */
+  margin-top: 50px;
+  animation: fadeInUp 1s ease-in-out;
+  text-align: center;
+}
+
 
 *,
 *::before,
@@ -20,10 +35,85 @@ html, body {
   background-color: #fafafa;
 }
 
+
+/* Page Headings */
+h1 {
+  font-size: 3rem; /* Large and prominent heading */
+  color: #2C3E50; /* Dark Slate Blue */
+  margin-top: 30px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #2C3E50; /* Dark Slate Blue */
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Shared button styles */
+.btn-primary {
+  background-color: #F5A623; /* Warm Yellow for call-to-action buttons */
+  color: #FFFFFF; /* White text */
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #FFCC33; /* Slightly brighter yellow on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+@media (max-width: 768px) {
+  .btn-primary {
+    font-size: 1.2rem;  /* Adjust button size for smaller screens */
+    padding: 12px 24px;
+  }
+}
+
+
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
   background-color: #fafafa;
+}
+
+
+/* Alert Box Styling */
+.alert {
+  background-color: #EAF3FA; /* Light Blue */
+  color: #2C3E50; /* Dark Slate Blue text */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Fade-in Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
