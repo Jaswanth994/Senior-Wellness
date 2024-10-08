@@ -1,0 +1,83 @@
+/* Article Page Styling */
+.article-page-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+  }
+  
+  .article-page-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 8px rgba(0, 123, 255, 0.4);
+  }
+  
+  .article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .article-item {
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .article-item:hover {
+    background-color: #007bff;
+    color: #fff;
+    transform: translateY(-5px);
+  }
+  
+  .article-content {
+    padding: 3rem;
+  }
+  
+  .coming-soon {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    color: #ff6b6b;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 5px rgba(255, 107, 107, 0.5);
+  }
+  
+  .btn-back {
+    padding: 0.8rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-back:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Tech-themed elements */
+  body {
+    background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  }
+  
+  h1, h2 {
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  p, button {
+    font-family: 'Roboto', sans-serif;
+  }
+  
