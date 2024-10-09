@@ -19,9 +19,10 @@ body {
     max-width: 600px; /* Smaller quiz card */
     width: 100%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    margin-top: 50px;
+    margin-top: 150px;
     animation: fadeInUp 1s ease-in-out;
     text-align: center;
+    align-items: center;
 }
 
 /* Question heading */

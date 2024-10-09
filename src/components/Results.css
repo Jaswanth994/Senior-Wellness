@@ -1,16 +1,5 @@
 /* Global background */
-body {
-    background-color: #ededed;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  
+
 /* Results container */
 .results-container {
     position: relative;
@@ -22,7 +11,7 @@ body {
 }
 
 /* Card container for score, message, and article */
-.card {
+.resultcard {
     background-color: #fff;
     border-radius: 12px;
     padding: 2rem;
@@ -34,20 +23,20 @@ body {
     position: relative;
     z-index: 1;
 }
-
+/* 
 /* Results heading */
-h2 {
+/* h2 {
     font-size: 2.5rem;
     color: #2C3E50;
     margin-bottom: 1.5rem;
-}
+} */
 
 /* Score display and message */
-p {
+/* p {
     font-size: 1.8rem;
     color: #333333;
-    margin-bottom: 2rem;
-}
+    margin-bottom: 2rem; 
+} */
 
 /* Suggested article button */
 .btn-primary {

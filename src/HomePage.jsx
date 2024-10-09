@@ -6,8 +6,8 @@ import animationtech from './assets/AnimationTech.json';
 import Header from './Header';
 import Hero from './Hero';
 import Card from './Card';
-import Footer from './Footer';
-
+import Footer from './Footer'; 
+import './HomePage.css';
 import './App.css'; // Ensure the CSS file is linked
 
 const Homepage = () => {
@@ -35,7 +35,7 @@ const Homepage = () => {
           animationData={animationtech} 
           title="Tech Help" 
           description="Get expert assistance with your tech-related questions and device setup." 
-          link="/quiz"  // Add links for routing
+          link="/quizhome"  // Add links for routing
         />
         <Card 
           animationData={animationData} 

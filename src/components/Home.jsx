@@ -6,9 +6,12 @@ import webNavAnimation from './WebpageNavigation.json';  // Adjust the path if n
 import androidNavAnimation from './AndroidNavigation.json';  // Adjust the path if necessary
 import iosNavAnimation from './DesktopNavigation.json';  // Adjust the path if necessary
 import './Home.css';  // Import the CSS file
-
+import '../App';
+import Header from '../Header';
 const Home = () => {
   return (
+    <div className='App'>
+      <Header/>
     <div className="container text-center">
       <h1>Welcome to the Tech Help Quiz</h1>
       <p>Select a navigation type to start the quiz:</p>
@@ -72,6 +75,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

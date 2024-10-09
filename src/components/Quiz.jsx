@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Quizz.css';
+import Header from '../Header';
+import '../App.css';
 
 const questions = [
   { question: "Where can you find the 'Help' section in an app?", options: ["Main menu", "Profile section", "At the bottom of the screen", "In the settings"], correct: 3 },
@@ -56,6 +58,8 @@ const Quiz = () => {
   };
 
   return (
+    <div className='App'>
+    <Header />
     <div className="quiz-container">
       <h2 className="question-heading">Question {currentQuestion + 1}</h2>
       <div className="question-box">
@@ -104,6 +108,7 @@ const Quiz = () => {
       >
         {currentQuestion < questions.length - 1 ? 'Next' : 'Finish Quiz'}
       </button>
+    </div>
     </div>
   );
 };

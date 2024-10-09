@@ -10,24 +10,24 @@ html, body {
 }
 
 /* Shared Styles for Containers */
-/* .container {
+.container {
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   padding: 2rem;
   max-width: 800px;
   width: 100%;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
-  margin-top: 50px;
+  margin-top: 150px;
   animation: fadeInUp 1s ease-in-out;
   text-align: center;
-} */
+}
 
-
+/* 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
-}
+} */
 
 #root {
   height: 100%;
@@ -95,6 +95,7 @@ h2 {
   min-height: 100vh;
   width: 100%;
   background-color: #fafafa;
+  align-items: center;
 }
 
 

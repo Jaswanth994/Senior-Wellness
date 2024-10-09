@@ -8,8 +8,9 @@
   align-items: center;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 1000;
+  box-sizing: border-box;
   box-shadow: 0 4px 2px -2px gray;
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import './results.css'; // Make sure the CSS file is named correctly
+import './Results.css'; // Make sure the CSS file is named correctly
 import './articelpage.jsx';
 
 const Results = () => {
@@ -38,7 +38,7 @@ const Results = () => {
 
   return (
     <div className="results-container">
-      <div className="card">
+      <div className="resultcard">
         <h2>Your Score: {score} / 15</h2>
         <p>{renderMessage()}</p>
         <Link to="/article-page" className="btn btn-primary">

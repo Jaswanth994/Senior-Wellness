@@ -30,6 +30,7 @@ function App() {
         <Route path="/helloworld" element={<HelloWorld />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/results" element={<Results />} />
+        <Route path="/quizhome" element={<Home />} />
         <Route path="/article-page" element={<ArticlePage />} />
         {/* If users go to an undefined route, you can redirect them */}
         <Route path="*" element={<Navigate to="/" />} />
