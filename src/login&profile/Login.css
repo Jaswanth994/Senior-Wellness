@@ -17,7 +17,7 @@
 
 .login-container::before {
     content: '';
-    background-image: url('./assets/loginimage.png');
+    background-image: url('../assets/loginimage.png');
     background-size: 100% auto; /* Adjust the size as needed */
     background-position: center 10px; /* Adjust the vertical position */
     background-repeat: no-repeat;

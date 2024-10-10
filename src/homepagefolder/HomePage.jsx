@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import animationData from './assets/Animationscam.json';
-import animationtuto from './assets/Animationtut.json';
-import animationtech from './assets/AnimationTech.json';
+import animationData from '../assets/Animationscam.json';
+import animationtuto from '../assets/Animationtut.json';
+import animationtech from '../assets/AnimationTech.json';
 
-import Header from './Header';
+import Header from '../Header';
 import Hero from './Hero';
 import Card from './Card';
-import Footer from './Footer'; 
+import Footer from '../Footer'; 
 import './HomePage.css';
-import './App.css'; // Ensure the CSS file is linked
+import '../App.css'; // Ensure the CSS file is linked
 
 const Homepage = () => {
   const [showPopup, setShowPopup] = useState(true);

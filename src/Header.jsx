@@ -1,9 +1,9 @@
 import React from 'react';
 import Lottie from 'lottie-react';
-import Navigation from './Navigation'; // Import Navigation component
+import Navigation from './homepagefolder/Navigation'; // Import Navigation component
 import './Header.css'; // Import Header styles
 import animationData from './assets/animHeart.json';
-import './Navigation.css';
+import './homepagefolder/Navigation.css';
 
 const Header = () => {
   return (

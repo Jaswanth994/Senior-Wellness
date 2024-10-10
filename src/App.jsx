@@ -1,11 +1,11 @@
 // src/App.jsx
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Homepage from './HomePage';  // Homepage component
-import Login from './Login';  // Login component
-import Profile from './Profile';  // Profile component
-import HelloWorld from './Home';  // HelloWorld component
-import Navigation from './Navigation'; 
+import Homepage from './homepagefolder/HomePage';  // Homepage component
+import Login from './login&profile/Login.jsx';  // Login component
+import Profile from './login&profile/Profile';  // Profile component
+import HelloWorld from './login&profile/Home';  // HelloWorld component
+import Navigation from './homepagefolder/Navigation'; 
 import WelcomePopup from './Popup'; // Navigation component
 import './App.css';  // Global styles
 

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import './Results.css'; // Make sure the CSS file is named correctly
-import './articelpage.jsx';
+import axios from 'axios'; // Import Axios
+import './Results.css';
 
 const Results = () => {
   const location = useLocation();
-  const { score } = location.state;
+  const { score, userName } = location.state; // Assuming userName is passed in location.state
 
   const suggestions = [
     { topic: "Beginner Appnavigation Articles", url: "/beginner-strategies" },
@@ -13,7 +13,6 @@ const Results = () => {
     { topic: "Advanced Appnavigation Concepts", url: "/advanced-techniques" }
   ];
 
-  // Select one article based on the score
   const getArticleSuggestion = () => {
     if (score === 15) {
       return suggestions[2]; 
@@ -33,6 +32,25 @@ const Results = () => {
       return "Keep practicing! You'll improve with more quizzes!";
     }
   };
+
+  // Function to save quiz result
+  const saveQuizResult = async () => {
+    try {
+      // Send a POST request to the backend to save the quiz result
+      const response = await axios.post('http://localhost:5000/api/quizResult/save', {
+        userName: userName || 'Anonymous', // Assuming userName is available
+        score: score
+      });
+      console.log('Result saved:', response.data.message);
+    } catch (error) {
+      console.error('Failed to save quiz result:', error);
+    }
+  };
+
+  // useEffect to save the result when the component mounts
+  useEffect(() => {
+    saveQuizResult();
+  }, [score]);
 
   const suggestion = getArticleSuggestion();
 

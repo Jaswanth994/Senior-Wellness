@@ -1,5 +1,5 @@
 import React from 'react';
-import heroImage from './assets/image.png'; // Adjust the path if needed
+import heroImage from '../assets/image.png'; // Adjust the path if needed
 import './Hero.css'; // Import CSS styles
 
 const Hero = () => {

@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { ref, set } from 'firebase/database';
 import { database } from './firebaseConfig';
 import './Login.css';
-import loginImage from './assets/loginimage.png';  // Updated path for your uploaded image
+import loginImage from '../assets/loginimage.png';  // Updated path for your uploaded image
 import 'font-awesome/css/font-awesome.min.css';
 
 const Login = () => {
