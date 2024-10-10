@@ -117,7 +117,7 @@ const Login = () => {
     }, [handleSubmit, permissionGranted]);
 
     return (
-        <div className="login-container" style={{ backgroundImage: `url(${loginImage})`, backgroundSize: 'cover' }}>
+        <div className="login-container" >
             {/* <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">Senior Wellness</a>

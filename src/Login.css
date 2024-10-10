@@ -7,23 +7,27 @@
     justify-content: center;
     align-items: center;
     height: 120vh;
+    width: 100%;
+    /* background-image: url('./assets/loginimage.png'); */
+    /* height: 100%; */
     background-color: #e0f7fa; /* Fallback background color */
     position: relative; /* For positioning elements */
+    
 }
 
 .login-container::before {
     content: '';
     background-image: url('./assets/loginimage.png');
-    background-size: 5% auto; /* Adjust the size as needed */
-    background-position: center -100px; /* Adjust the vertical position */
+    background-size: 100% auto; /* Adjust the size as needed */
+    background-position: center 10px; /* Adjust the vertical position */
     background-repeat: no-repeat;
-    opacity: 0;
+    opacity: 0.5;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1;
+    /* z-index: 10; */
 }
 
 
@@ -35,6 +39,8 @@
     padding: 50px;
     width: 590px;
     text-align: center;
+    opacity: 1;
+    z-index: 1000;
 }
 
 /* Other styles remain unchanged */
