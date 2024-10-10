@@ -232,20 +232,20 @@ const LocationSharingGuide = () => {
           Previous
         </motion.button>
         <motion.button
-          className="next-button"
-          onClick={handleNext}
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
-          {currentStep < steps.length - 1 ? 'Next' : 'Finish'}
-        </motion.button>
-        <motion.button
           className="replay-button"
           onClick={handleReplay}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
           Replay
+        </motion.button>
+        <motion.button
+          className="next-button"
+          onClick={handleNext}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+        >
+          {currentStep < steps.length - 1 ? 'Next' : 'Finish'}
         </motion.button>
         <motion.button
           className="speak-button"
