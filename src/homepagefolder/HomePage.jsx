@@ -3,12 +3,14 @@ import animationData from '../assets/Animationscam.json';
 import animationtuto from '../assets/Animationtut.json';
 import animationtech from '../assets/AnimationTech.json';
 
+
 import Header from '../Header';
 import Hero from './Hero';
 import Card from './Card';
 import Footer from '../Footer'; 
 import './HomePage.css';
 import '../App.css'; // Ensure the CSS file is linked
+
 
 const Homepage = () => {
   const [showPopup, setShowPopup] = useState(true);
@@ -47,7 +49,7 @@ const Homepage = () => {
           animationData={animationtuto} 
           title="Live Tutorials" 
           description="Join interactive sessions to learn new skills in real-time with expert guidance." 
-          link="/live-tutorials"  // Add links for routing
+          link="/livetutorial"  // Add links for routing
         />
       </section>
 
