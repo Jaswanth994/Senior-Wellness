@@ -101,9 +101,12 @@ const LocationSharingGuide = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
-      navigate(`/`); // Navigate back to options page
+      navigate(`/livetutorial`); // Navigate back to options page
     }
   };
+  const handleHome = () => {
+    navigate('/');
+  }
 
   const handlePrev = () => {
     playClickSound();
@@ -245,7 +248,7 @@ const LocationSharingGuide = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
-          {currentStep < steps.length - 1 ? 'Next' : 'Finish'}
+          {currentStep < steps.length - 1 ? 'Next' : 'Go to the options page'}
         </motion.button>
         <motion.button
           className="speak-button"
@@ -254,6 +257,14 @@ const LocationSharingGuide = () => {
           transition={{ duration: 0.2 }}
         >
           Hear Instructions
+        </motion.button>
+        <motion.button
+          className="home-button"
+          onClick={handleHome}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+        >
+          Go to Homepage
         </motion.button>
       </div>
     </div>

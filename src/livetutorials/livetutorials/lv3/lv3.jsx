@@ -80,7 +80,7 @@ const Ringtone = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
-      navigate(`/`); // Navigate back to the options page after completing all steps
+      navigate(`/livetutorial`); // Navigate back to the options page after completing all steps
     }
   };
 
@@ -93,6 +93,9 @@ const Ringtone = () => {
     playClickSound();
     setCurrentStep(0);
   };
+  const handleHome = () => {
+    navigate('/');
+  }
 
   const speakText = (text) => {
     // Stop any ongoing speech
@@ -239,6 +242,14 @@ const Ringtone = () => {
           transition={{ duration: 0.2 }}
         >
           Hear Instructions
+        </motion.button>
+        <motion.button
+          className="home-button"
+          onClick={handleHome}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+        >
+          Go to Homepage
         </motion.button>
       </div>
     </div>

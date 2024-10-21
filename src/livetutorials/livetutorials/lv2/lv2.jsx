@@ -100,9 +100,12 @@ const MapsGuide = () => {
             setCurrentStep((prevStep) => prevStep + 1);
         } else {
             
-            navigate(`/`); 
+            navigate(`/livetutorial`); 
         }
     };
+    const handleHome = () => {
+        navigate('/');
+      }
 
     const handlePrev = () => {
         playClickSound();
@@ -258,6 +261,14 @@ const MapsGuide = () => {
                 >
                     Hear Instructions
                 </motion.button>
+                <motion.button
+          className="home-button"
+          onClick={handleHome}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+        >
+          Go to Homepage
+        </motion.button>
             </div>
         </div>
     );

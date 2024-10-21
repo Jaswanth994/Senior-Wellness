@@ -1,5 +1,5 @@
 /* Global styles (can be added to a global file like App.css or scoped to HomePage) */
-.App body {
+ body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -9,19 +9,19 @@
 }
 
 /* HomePage specific styles */
-.App .features {
+ .features {
     padding: 50px 20px;
     background-color: #ffffff;
     text-align: center;
 }
 
-.App .features h2 {
+ .features h2 {
     font-size: 36px;
     margin-bottom: 30px;
     color: #333;
 }
 
-.App .feature-list {
+ .feature-list {
     display: flex;
     justify-content: space-around;
     gap: 20px;
@@ -29,7 +29,7 @@
     padding: 0 20px;
 }
 
-.App .feature-card {
+ .feature-card {
     flex: 1;
     min-width: 250px;
     margin: 10px;
