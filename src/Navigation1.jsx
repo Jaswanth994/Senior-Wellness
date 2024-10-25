@@ -1,7 +1,10 @@
+
 // src/Navigation.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './Navigation.css'; // Ensure you have styles to handle the active class
+import './homepagefolder/Navigation.css';
+
+
 
 const Navigation = () => {
   return (
@@ -17,12 +20,6 @@ const Navigation = () => {
         className={({ isActive }) => (isActive ? 'active' : '')}
       >
         Login
-      </NavLink>
-      <NavLink 
-        to="/profile" 
-        className={({ isActive }) => (isActive ? 'active' : '')}
-      >
-        Profile
       </NavLink>
     </nav>
   );

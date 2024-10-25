@@ -1,4 +1,4 @@
-/* Cards Section Styles (Card.css) */
+/*Cards Section Styles (Card.css) */
 .section {
   display: flex;
   justify-content: space-around;
@@ -13,19 +13,19 @@
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   text-align: center;
-  font-size: larger;
+  font-size: medium;
 }
 
 .card {
   background-color: #f3f6f9;
   color: #333333;
-  padding: 20px;
-  width: 400px;
+  padding: 5px;
+  width: 350px;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  margin: 20px;
+  margin: 5px;
 }
 
 .card:hover {
@@ -35,24 +35,25 @@
 }
 
 /* Center the animation */
-.lottieanimation {
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  width: 300px; /* Fixed width */
-  height: 300px; /* Fixed height */
-  margin: 0 auto; /* Center the animation in the card */
+ .lottieanimation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 300px;
+  margin: 0 auto;
 }
 
 .card h3 {
   margin: 100px 20;
   color: #004d40;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .card p {
-  margin-top: 10px; /* Space above the description */
-  color: #555; /* Color for the description */
-  font-size: 1.75rem; /* Adjust font size as necessary */
-}
+  margin-top: 10px;
+  color: #555;
+  font-size: 1.5rem;
+} 
+

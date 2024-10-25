@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import animationData from '../assets/Animationscam.json';
-import animationtuto from '../assets/Animationtut.json';
+ import animationData from '../assets/Animationscam.json';
+ import animationtuto from '../assets/Animationtut.json';
 import animationtech from '../assets/AnimationTech.json';
 
 
@@ -13,15 +13,6 @@ import '../App.css'; // Ensure the CSS file is linked
 
 
 const Homepage = () => {
-  const [showPopup, setShowPopup] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPopup(false);
-    }, 3000); // Popup will disappear after 3 seconds
-
-    return () => clearTimeout(timer); // Cleanup timer on unmount
-  }, []);
 
   return (
     <div className="App">

@@ -6,8 +6,9 @@ import Homepage from './homepagefolder/HomePage';  // Homepage component
 import Login from './login&profile/Login.jsx';  // Login component
 import Profile from './login&profile/Profile';  // Profile component
 import HelloWorld from './login&profile/Home';  // HelloWorld component
-import Navigation from './homepagefolder/Navigation'; 
+// import Navigation from './homepagefolder/Navigation'; 
 import WelcomePopup from './Popup'; // Navigation component
+import AfterLogin from './homepagefolder/Afterlogin.jsx';
 import './App.css';  // Global styles
 
 import Home from './components/Home.jsx';
@@ -33,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/helloworld" element={<HelloWorld />} />
+        <Route path="/afterlogin" element={<AfterLogin />} /> {/* AfterLogin Route */}
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/results" element={<Results />} />
         <Route path="/quizhome" element={<Home />} />

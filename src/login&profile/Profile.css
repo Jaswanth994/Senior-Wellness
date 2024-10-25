@@ -4,7 +4,20 @@
     margin: 0 auto;
     padding: 20px;
 }
-
+.profile-container::before {
+    content: '';
+    background-image: url('../assets/profile-bg.png.webp');
+    background-size: 100% auto; /* Adjust the size as needed */
+    background-position: center 10px; /* Adjust the vertical position */
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+     z-index: 10; 
+}
 .profile-header {
     text-align: center;
     background: linear-gradient(to right, #6a11cb, #2575fc);
