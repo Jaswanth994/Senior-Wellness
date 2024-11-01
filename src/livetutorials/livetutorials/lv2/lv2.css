@@ -1,4 +1,4 @@
-body, html {
+/* body, html {
   margin: 0;
   padding: 0;
   display: flex;
@@ -7,18 +7,18 @@ body, html {
   height: 100vh;
   background-color: #f0f0f0;
   color: black;
-}
+} */
 
-.guide-container {
-  text-align: center;
+ /*.guide-container {
+  text-align: centre;
   position: relative;
   color: black;
-  width: 900px;
+  /*width: 900px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: white;
   border-radius: 1rem;
-}
+}  */
 
 .image-container {
   position: relative;

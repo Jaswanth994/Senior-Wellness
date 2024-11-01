@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './lv.css';
+import '../App.css';
+import Header from '../Header';
+
 
 
 const LV = () => {
@@ -21,7 +24,9 @@ const LV = () => {
     };
 
     return (
-        <div className="container">
+        <div className='App' >
+           < Header />
+            <div className='options'>
             <h1>Select a Tutorial Guide</h1>
             <form onSubmit={handleSubmit}>
                 <select value={selectedOption} onChange={handleChange}>
@@ -32,6 +37,7 @@ const LV = () => {
                 </select>
                 <button type="submit">Go</button>
             </form>
+            </div>
         </div>
     );
 };
