@@ -1,0 +1,119 @@
+/* Updated login.css - matching the image style */
+
+/* Container for the entire page */
+/* In Login.css */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120vh;
+    width: 100%;
+    /* background-image: url('./assets/loginimage.png'); */
+    /* height: 100%; */
+    background-color: #e0f7fa; /* Fallback background color */
+    position: relative; /* For positioning elements */
+    
+}
+
+.login-container::before {
+    content: '';
+    background-image: url('../assets/loginimage.png');
+    background-size: 100% auto; /* Adjust the size as needed */
+    background-position: center 10px; /* Adjust the vertical position */
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* z-index: 10; */
+}
+
+
+/* Login box styles */
+.login-box {
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for the login box */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+    width: 590px;
+    text-align: center;
+    opacity: 1;
+    z-index: 1000;
+}
+
+/* Other styles remain unchanged */
+
+/* Input field container */
+.input-container {
+    position: relative;
+    margin-bottom: 25px;
+    width: 95%;
+}
+
+/* Icon styles */
+.icon {
+    position: absolute;
+    left: 7px; /* Adjust left position as necessary */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9e9e9e;
+    pointer-events: none;
+    font-size: 1.2em;
+}
+
+/* Input field styles */
+input {
+    width: 100%;
+    padding: 12px 20px 12px 40px; /* Add more padding on the left */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    color: black;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Adjust the padding for the input field */
+input::placeholder {
+    color: #bbb;
+    padding: 12px 20px 12px 30px;
+}
+
+
+/* Submit button styles */
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #0288d1; /* Blue Button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0277bd; /* Darker shade on hover */
+}
+
+/* Toggle mode text */
+.toggle-mode {
+    margin-top: 15px;
+}
+
+.toggle-mode p {
+    color: #555;
+    font-size: 0.9em;
+}
+
+.toggle-mode button {
+    background: none;
+    border: none;
+    color: #0288d1;
+    cursor: pointer;
+    font-weight: bold;
+}

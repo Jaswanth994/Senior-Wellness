@@ -1,0 +1,31 @@
+/* Hero Section Styles (Hero.css) */
+.hero {
+  /* padding: 20px; */
+  text-align: center;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Hero-container {
+  margin-top: 5px;
+  background-color: #fafafa;
+  /* border: 1px solid; */
+  border-radius: 10px;
+  /* padding: 40px; */
+  width: 100%;
+  text-align: center;
+}
+
+/* Full-width image */
+.hero-image {
+  width: 100%; /* Make the image take full width */
+  height: 80%; /* Adjust height as needed */
+  border-radius: 10px; /* Optional: round the corners */
+  object-fit: cover; /* Ensure the image covers the container */
+  object-position: top; /* Align the image to the top */
+  margin-top: 50px; /* Optional: spacing above the image */
+}

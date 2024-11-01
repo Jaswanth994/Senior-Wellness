@@ -1,42 +1,120 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+/* Global Styles (App.css) */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* Shared Styles for Containers */
+.container {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
   padding: 2rem;
+  /*max-width: 800px;*/
+  width: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  margin-top: 150px;
+  animation: fadeInUp 1s ease-in-out;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+} */
+
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: #fafafa;
 }
 
-@keyframes logo-spin {
+
+/* Page Headings */
+h1 {
+  font-size: 3rem; /* Large and prominent heading */
+  color: #2C3E50; /* Dark Slate Blue */
+  margin-top: 30px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #2C3E50; /* Dark Slate Blue */
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Shared button styles */
+.btn-primary {
+  background-color: blue; /* Warm Yellow for call-to-action buttons */
+  color: #FFFFFF; /* White text */
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #FFCC33; /* Slightly brighter yellow on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+@media (max-width: 768px) {
+  .btn-primary {
+    font-size: 1.2rem;  /* Adjust button size for smaller screens */
+    padding: 12px 24px;
+  }
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fafafa;
+  align-items: center;
+}
+
+
+/* Alert Box Styling */
+.alert {
+  background-color: #EAF3FA; /* Light Blue */
+  color: #2C3E50; /* Dark Slate Blue text */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Fade-in Animation */
+@keyframes fadeInUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
