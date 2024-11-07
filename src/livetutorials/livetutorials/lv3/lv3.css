@@ -119,7 +119,7 @@
 .prev-button:hover:not(:disabled),
 .next-button:hover:not(:disabled),
 .replay-button:hover:not(:disabled) {
-  background-color: #0056b3; 
+  background-color: #FFCC33; 
 }
 
 .speak-button {

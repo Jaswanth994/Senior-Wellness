@@ -118,3 +118,105 @@ h2 {
     transform: translateY(0);
   }
 }
+
+
+/* Add this to your App.css */
+
+/* Speak Button Styling */
+.speak-button {
+  background-color: #007BFF; /* Primary blue color */
+  color: #FFFFFF; /* White text */
+  border: none;
+  padding: 12px 24px; /* Padding for the button */
+  font-size: 1.2rem; /* Font size */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  margin: 20px; /* Margin for spacing */
+}
+
+.speak-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.speakbutton {
+  position: fixed; 
+  bottom: 20px; 
+  left: 20px;
+  background-color: #4caf50; 
+  color: #FFFFFF;  
+  border: none;
+  width: 120px;
+  height: 40px;
+  padding: 10px 20px; 
+  font-size: 1rem; 
+  border-radius: 8px;
+  cursor: pointer; 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  z-index: 2000;
+}
+
+.speakbutton:hover {
+  background-color: #0056b3; 
+  transform: scale(1.05); 
+}
+
+
+/* Position and style for the Info button container */
+.info-button-container {
+  position: fixed;
+  bottom: 20px;
+  left: 150px; /* Adjust to position it next to the voice button */
+  display: inline-block;
+  z-index: 2000;
+}
+
+/* Info Button styling */
+.infobutton {
+  background-color: #007BFF;
+  color: #FFFFFF;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.infobutton:hover {
+  background-color: #0dee18;
+}
+
+/* Tooltip styling */
+.info-tooltip {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 60px;
+  left: -20px;
+  width: 250px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Show tooltip on hover */
+.info-button-container:hover .info-tooltip {
+  visibility: visible;
+  opacity: 1;
+}

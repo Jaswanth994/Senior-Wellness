@@ -123,7 +123,7 @@ const Ringtone = () => {
 
   return (
     <div className="guide-container">
-      <h2>How to Share Your Location in WhatsApp</h2>
+      <h2>How to Set Ringtone in your in Mobile</h2>
 
       <div className="image-container">
         <motion.img
