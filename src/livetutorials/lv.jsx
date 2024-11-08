@@ -28,6 +28,9 @@
                         <div className="option-box1" onClick={() => handleOptionClick('ring')}>
                             Setting Ringtone for calls
                         </div>
+                        <div className="option-box1" onClick={() => handleOptionClick('language')}>
+                            Setting up Language for Mobile
+                        </div>
                     </div>
                 </div>
             </div>

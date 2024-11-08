@@ -16,6 +16,7 @@ import Livetutorial from './livetutorials/lv.jsx';
 import LocationSharingGuide from './livetutorials/livetutorials/lv1/lv1.jsx';
 import MapsGuide from './livetutorials/livetutorials/lv2/lv2.jsx';
 import Ringtone from './livetutorials/livetutorials/lv3/lv3.jsx';
+import Language from './livetutorials/livetutorials/lv4/lv4.jsx';
 
 function App() {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ function App() {
       else if (command.includes('location guide')) navigate('/option/location-guide');
       else if (command.includes('maps guide')) navigate('/option/maps-guide');
       else if (command.includes('ringtone')) navigate('/option/ring');
+      else if(command.includes('language')) navigate('/option/language');
       else console.log('Unrecognized command');
     };
 
@@ -76,6 +78,7 @@ function App() {
       <li><strong>"Location Guide"</strong> - Location Sharing Guide</li>
       <li><strong>"Maps Guide"</strong> - Maps Tutorial</li>
       <li><strong>"Ringtone"</strong> - Set up Ringtone Tutorial</li>
+      <li><strong>"Language"</strong>- Set up Language Tutorial</li>
     </ul>
   </div>
 </div>
@@ -94,6 +97,7 @@ function App() {
         <Route path="/option/location-guide" element={<LocationSharingGuide />} />
         <Route path="/option/maps-guide" element={<MapsGuide />} />
         <Route path="/option/ring" element={<Ringtone />} />
+        <Route path="/option/language" element={<Language />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
