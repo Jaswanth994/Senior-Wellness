@@ -1,26 +1,37 @@
-// routes/quizResultRoutes.js
-
 const express = require('express');
 const router = express.Router();
 const QuizResult = require('../models/QuizResult');
 
-// Save quiz result
-router.post('/save', async (req, res) => {
-  const { userName, score } = req.body;
+// Add a new quiz result
+router.post('/add', async (req, res) => {
+  const { userId, category, score } = req.body;
 
   try {
-    const newResult = new QuizResult({ userName, score });
+    const newResult = new QuizResult({ userId, category, score });
     await newResult.save();
-    res.json({ message: 'Quiz result saved successfully' });
+    res.json({ message: 'Quiz result added successfully' });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to save quiz result' });
+    res.status(500).json({ error: 'Failed to add quiz result' });
   }
 });
 
-// Get all quiz results
-router.get('/', async (req, res) => {
+// Get quiz results for a specific user
+router.get('/user/:userId', async (req, res) => {
   try {
-    const results = await QuizResult.find();
+    const results = await QuizResult.find({ userId: req.params.userId });
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve quiz results' });
+  }
+});
+
+// Get quiz results by category for a user
+router.get('/user/:userId/:category', async (req, res) => {
+  try {
+    const results = await QuizResult.find({
+      userId: req.params.userId,
+      category: req.params.category
+    });
     res.json(results);
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve quiz results' });

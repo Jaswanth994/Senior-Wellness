@@ -4,8 +4,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// Import route files
-const quizQuestionRoutes = require('./routes/quizQuestionRoutes');
+// Import Routes
+const userRoutes = require('./routes/userRoutes');
+const quizRoutes = require('./routes/quizRoutes');
+const articleRoutes = require('./routes/articleRoutes');
 const quizResultRoutes = require('./routes/quizResultRoutes');
 
 const app = express();
@@ -21,9 +23,11 @@ mongoose.connect(uri)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log('MongoDB connection error:', err));
 
-// Routes
-app.use('/api/questions', quizQuestionRoutes);  // Route for quiz questions
-app.use('/api/results', quizResultRoutes);      // Route for quiz results
+// Use Routes
+app.use('/api/users', userRoutes);
+app.use('/api/quizzes', quizRoutes);
+app.use('/api/quiz-results', quizResultRoutes); 
+app.use('/api/articles', articleRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
