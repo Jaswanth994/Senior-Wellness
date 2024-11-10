@@ -17,10 +17,22 @@ import LocationSharingGuide from './livetutorials/livetutorials/lv1/lv1.jsx';
 import MapsGuide from './livetutorials/livetutorials/lv2/lv2.jsx';
 import Ringtone from './livetutorials/livetutorials/lv3/lv3.jsx';
 import Language from './livetutorials/livetutorials/lv4/lv4.jsx';
+import ScamPreventionHome from './scam/ScamPreventionHome.jsx';
+import LinkChatbot from './scam/msg/LinkChatbot.jsx';
+import Call from './scam/call/call.jsx';
+import Linkhome from './scam/link/components/HomePage.jsx';
+import PageOne from './scam/link/components/PageOne';
+import PageTwo from './scam/link/components/PageTwo';
+import PageThree from './scam/link/components/PageThree';
+import LandingPageOne from './scam/link/components/LandingPageOne';
+import LandingPageTwo from './scam/link/components/LandingPageTwo';
+import LandingPageThree from './scam/link/components/LandingPageThree';
 
 function App() {
   const navigate = useNavigate();
   const [isListening, setIsListening] = useState(false);
+
+  
 
   // Handle the button click to enable voice navigation.
   const startListening = () => {
@@ -39,11 +51,13 @@ function App() {
       else if (command.includes('quiz')) navigate('/quizhome');
       else if (command.includes('results')) navigate('/results');
       else if (command.includes('article')) navigate('/article-page');
-      else if(command.includes('live tutorial')) navigate('/livetutorial');
+      else if (command.includes('live tutorial')) navigate('/livetutorial');
       else if (command.includes('location guide')) navigate('/option/location-guide');
       else if (command.includes('maps guide')) navigate('/option/maps-guide');
       else if (command.includes('ringtone')) navigate('/option/ring');
-      else if(command.includes('language')) navigate('/option/language');
+      else if (command.includes('language')) navigate('/option/language');
+      else if (command.includes('scam home')) navigate('/scamhome');
+      else if (command.includes('call')) navigate('/call');
       else console.log('Unrecognized command');
     };
 
@@ -79,6 +93,7 @@ function App() {
       <li><strong>"Maps Guide"</strong> - Maps Tutorial</li>
       <li><strong>"Ringtone"</strong> - Set up Ringtone Tutorial</li>
       <li><strong>"Language"</strong>- Set up Language Tutorial</li>
+      <li><strong>"Call"</strong>-Goes to Call scam</li>
     </ul>
   </div>
 </div>
@@ -98,6 +113,16 @@ function App() {
         <Route path="/option/maps-guide" element={<MapsGuide />} />
         <Route path="/option/ring" element={<Ringtone />} />
         <Route path="/option/language" element={<Language />} />
+        <Route path = "/call" element={<Call />} />
+        <Route path = "/scamhome" element={<ScamPreventionHome />} />
+        <Route path = "/link-chatbot" element={<LinkChatbot />} />
+        <Route path = "/linkhome" element = {<Linkhome />} />
+        <Route path="/page1" element={<PageOne />} />
+        <Route path="/page2" element={<PageTwo />} />
+        <Route path="/page3" element={<PageThree />} />
+        <Route path="/landing1" element={<LandingPageOne />} />
+        <Route path="/landing2" element={<LandingPageTwo />} />
+        <Route path="/landing3" element={<LandingPageThree />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>

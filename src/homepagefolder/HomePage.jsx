@@ -43,7 +43,7 @@ const Homepage = () => {
           animationData={animationData} 
           title="Scam Prevention" 
           description="Learn essential strategies to ensure a safe and healthy living environment for seniors." 
-          link="/scam-prevention"  // Add links for routing
+          link="/scamhome"  // Add links for routing
         />
         <Card 
           animationData={animationtuto} 

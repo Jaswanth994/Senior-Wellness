@@ -1,0 +1,102 @@
+/* Reset and general styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  overflow-y: auto; /* Allow vertical scrolling */
+  background-color: #f4f7f9;
+}
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 100%;
+  max-width: 1200px; /* Limit width to improve layout */
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2rem; /* Slightly smaller font size */
+  color: #f76342;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%; /* Use full width for better control */
+  word-wrap: break-word; /* Ensure text breaks properly */
+}
+
+/* Article content styling */
+.article-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  width: 90%; /* More responsive width */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #333;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.article-content strong {
+  color: #f76342;
+}
+
+ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Back button styling */
+.back-button {
+  padding: 12px 35px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  align-self: center;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Media query for mobile responsiveness */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.6rem;
+    margin-top: 10px;
+    padding: 0 10px; /* Add padding for spacing */
+  }
+
+  .article-content {
+    font-size: 1rem;
+    padding: 15px;
+    width: 90%;
+  }
+
+  .back-button {
+    padding: 10px 30px;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+}

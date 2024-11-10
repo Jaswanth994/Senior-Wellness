@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
-import './lv2.css';
+import '../../live.css';
 
 // Import images
 import step1 from './images/map.jpg';
@@ -145,7 +145,7 @@ const MapsGuide = () => {
         <div className="guide-container">
             <h2>How to Use Google Maps</h2>
 
-            <div className="image-container">
+            <div className="image-container1">
                 <motion.img
                     key={currentStep}
                     src={image}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
-import './lv4.css';
+import '../../live.css';
 
 import step1 from './images/app.jpg';
 import step2 from './images/settings.jpeg';
@@ -125,7 +125,7 @@ const Ringtone = () => {
     <div className="guide-container">
       <h2>How to Set Language in your in Mobile</h2>
 
-      <div className="image-container">
+      <div className="image-container1">
         <motion.img
           key={currentStep}
           src={image}
