@@ -1,0 +1,131 @@
+/* Page container with full background image */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../assets/background.jpg'); /* Update with the actual path */
+  background-size: cover; /* Make background cover the entire screen */
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Image container with oscillating effect */
+.image-container {
+  position: relative;
+  width: 60vw;
+  max-width: 800px;
+  animation: zoomOscillate 3s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+/* Image itself without animation */
+.oscillating-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Common styles for both buttons */
+.image-button {
+  position: absolute;
+  bottom: 0.5%;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  background-color: #d9534f;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.9;
+  transform: translate(-50%, -50%);
+}
+
+/* Green "Yes" button */
+.yes-button {
+  left: 30%;
+  background-color: #28a745; /* Green color */
+}
+
+/* Red "No" button */
+.no-button1 {
+  right: 5%;
+  background-color: red; /* Red color */
+}
+
+/* Hover effect for buttons */
+.image-button:hover {
+  opacity: 1;
+}
+
+/* Keyframes for oscillating zoom effect */
+@keyframes zoomOscillate {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Overlay for popups */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Popup styling */
+.popup {
+  position: relative;
+  max-width: 400px;
+  padding: 30px 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-size: 1.2rem;
+  color: #d9534f; /* Red color for scam alert */
+  font-weight: bold;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Success popup styling */
+.success-popup {
+  color: #28a745; /* Green color for success */
+}
+
+/* Icon on top of popup */
+.popup::before {
+  content: "!";
+  font-size: 2.5rem;
+  color: inherit;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
