@@ -1,57 +1,74 @@
-/* Make the outer container full height and center its content */
-body, html {
-  height: 100%;
-  margin: 0;
+/* Full-screen background */
+.chatbot-background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 .chatbot-container {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  color: #ffffff;
+  max-width: 400px;
+  padding: 20px 25px;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark overlay for readability */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Soft shadow effect */
   text-align: center;
-  width: 400px; /* Set a fixed width for consistency */
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.7); /* Optional: Add a background for contrast */
-  border-radius: 8px; /* Optional: Rounded corners */
 }
 
 .chatbot-container h2 {
   margin-bottom: 20px;
+  font-size: 1.8em;
+  color: #ffcc00;
 }
 
 .chatbot-container p {
-  font-size: 18px;
+  font-size: 1.1em;
   margin-bottom: 15px;
-  min-height: 60px; /* Maintain consistent height to prevent movement */
-}
-
-.chatbot-container .button-group {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Space between buttons */
-}
-
-.chatbot-container button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  background-color: #f39c12;
-  color: white;
-  cursor: pointer;
-}
-
-.chatbot-container button:hover {
-  background-color: #e67e22;
 }
 
 .risk-explanation {
   font-size: 0.9em;
-  color: #cb1717; /* Example styling */
+  color: #e74c3c; /* Example warning color */
   margin-top: 5px;
 }
 
+.button-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #f39c12;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e67e22;
+}
+
+.yes {
+  width: 80px;
+
+}
+
+.no {
+  width: 80px;
+}
+
+
+.home {
+  width: 120px;
+  right: 680px;
+  bottom: 150px;
+}
