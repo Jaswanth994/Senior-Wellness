@@ -1,0 +1,133 @@
+/* General Styling for the App */
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  width: 100%;
+  background-color: #000; /* Optional: For a black background during animation */
+}
+
+/* Cover Page Styling */
+.cover-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  
+}
+
+.cover-image {
+  background-image: url('./assets/new-image.png'); /* Replace with your PNG image */
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  animation: zoomInOut 5s ease-in-out forwards, splitReveal 4s ease-in-out 5s forwards; /* Apply the zoom animation */
+}
+
+
+
+.proceed-button-container {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: 10; /* Ensure it's on top of the image */
+}
+
+.proceed-button {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.proceed-button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1); /* Initial scale */
+  }
+  50% {
+    transform: scale(1.1); /* Zoom in */
+  }
+  100% {
+    transform: scale(1); /* Zoom out */
+  }
+}
+
+/* Optional Global Background Image Styling */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url('./assets/background-image.png'); /* Add your global background image here */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+/* Styling for the Website Content */
+.website-content {
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.website-content h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.website-content p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.website-content button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.website-content button:hover {
+  background-color: #0056b3;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .website-content {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .website-content h1 {
+    font-size: 2rem;
+  }
+
+  .website-content p {
+    font-size: 1rem;
+  }
+}

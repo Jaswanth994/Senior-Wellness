@@ -1,0 +1,52 @@
+/* CoverPage.css */
+.cover-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cover-image {
+    background-image: url('./assets/new-image.png'); /* New Image for Cover Page */
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-position: center;
+    background-repeat: no-repeat; /* Prevents repeating of the background image */
+    width: 100vw; /* Use full viewport width */
+    height: 100vh; /* Use full viewport height */
+    filter: brightness(0.8);
+    animation: zoomInOut 5s ease-in-out forwards; /* Apply the zoom animation */
+  }
+  
+  
+  @keyframes zoomInOut {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5); /* Zoom in */
+    }
+    100% {
+      transform: scale(1); /* Zoom out */
+    }
+  }
+  
+  .proceed-button {
+    position: absolute;
+    bottom: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: none;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .proceed-button:hover {
+    background-color: #ddd;
+  }
+  
