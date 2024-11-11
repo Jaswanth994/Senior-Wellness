@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Profile.css';
 import { database } from './firebaseConfig';
 import { ref, orderByChild, equalTo, query, get, update } from 'firebase/database';
@@ -12,6 +12,63 @@ const Profile = () => {
     const [quizResults, setQuizResults] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [isSpeakingEnabled, setIsSpeakingEnabled] = useState(false);
+    
+    const speakingRef = useRef(false);
+    const utteranceRef = useRef(new SpeechSynthesisUtterance());
+    const speed = 1;  // Adjust the speed as per your requirement
+
+    useEffect(() => {
+        const handleMouseOver = (e) => {
+            if (!isSpeakingEnabled) return;
+
+            const mousePos = document.caretRangeFromPoint(e.clientX, e.clientY);
+            if (mousePos && mousePos.startContainer.nodeType === Node.TEXT_NODE) {
+                const textNode = mousePos.startContainer;
+                const sentence = extractSentence(textNode.textContent, mousePos.startOffset);
+
+                if (sentence && !speakingRef.current) {
+                    speakingRef.current = true;
+                    speakText(sentence);
+                }
+            }
+        };
+
+        document.addEventListener('mousemove', handleMouseOver);
+        return () => {
+            document.removeEventListener('mousemove', handleMouseOver);
+        };
+    }, [isSpeakingEnabled]);
+
+    const extractSentence = (text, offset) => {
+        const beforeText = text.slice(0, offset);
+        const afterText = text.slice(offset);
+
+        const sentenceStart = beforeText.lastIndexOf('.') !== -1 ? beforeText.lastIndexOf('.') + 1 : 0;
+        const sentenceEnd = afterText.indexOf('.') !== -1 ? offset + afterText.indexOf('.') + 1 : text.length;
+
+        const sentence = text.slice(sentenceStart, sentenceEnd).trim();
+        return sentence;
+    };
+
+    const speakText = (text) => {
+        if (speechSynthesis.speaking) {
+            speechSynthesis.cancel();
+        }
+
+        utteranceRef.current.text = text;
+        utteranceRef.current.rate = speed;
+
+        utteranceRef.current.onend = () => {
+            speakingRef.current = false;
+        };
+
+        speechSynthesis.speak(utteranceRef.current);
+    };
+
+    const handleSpeakingToggle = () => {
+        setIsSpeakingEnabled(!isSpeakingEnabled);
+    };
 
 
     const fetchQuizResults = async (uid) => {
@@ -142,7 +199,7 @@ const Profile = () => {
                                 />
                             </div>
                             <button type="submit">Save Changes</button>
-                            <button onClick={() => setIsEditing(false)}>Cancel</button>
+                            <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
                         </form>
                     )}
                 </div>
@@ -163,6 +220,9 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
+            <button onClick={handleSpeakingToggle} style={{ marginBottom: '10px' }}>
+                {isSpeakingEnabled ? 'Disable Speaking' : 'Enable Speaking'}
+            </button>
         </div>
     );
 };

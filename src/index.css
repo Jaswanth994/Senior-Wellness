@@ -21,7 +21,7 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  background-color: #F5A623; /* Warm Yellow for buttons */
+  background-color: blue; /* Warm Yellow for buttons */
   color: #FFFFFF; /* White text */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
