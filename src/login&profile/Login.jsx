@@ -18,7 +18,7 @@ const Login = () => {
     const [permissionGranted, setPermissionGranted] = useState(false);
     const navigate = useNavigate();
     const auth = getAuth();
-
+    
     // Request microphone permission on mount
     useEffect(() => {
         const requestMicrophonePermission = async () => {
@@ -85,8 +85,15 @@ const Login = () => {
         if (annyang && permissionGranted) {
             const commands = {
                 'email *emailValue': (emailValue) => {
-                    setEmail(emailValue.trim());
-                    setOutput(`Email set to: ${emailValue}`);
+                    let cleanedEmail = emailValue.trim();
+
+                    // Remove trailing period if present
+                    //if (cleanedEmail.endsWith('.')) {
+                        cleanedEmail = cleanedEmail.slice(0, -1);
+                    
+                
+                    setEmail(cleanedEmail);
+                    setOutput(`Email set to: ${cleanedEmail}`); 
                 },
                 'password *passwordValue': (passwordValue) => {
                     setPassword(passwordValue.trim());
@@ -148,15 +155,21 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <div className="input-container">
-                        <i className="fa fa-lock icon"></i>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter your password"
-                            required
-                        />
+                <div className="input-container">
+                <div className="input-with-icon">
+        <i className="fa fa-lock icon"></i>
+        <input
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            required
+        />
+        <i
+            className={`fa ${showPassword ? 'fa-eye-slash' : 'fa-eye'} password-toggle-icon`}
+            onClick={() => setShowPassword(!showPassword)}
+        />
+    </div>
                     </div>
                     {isSignUp && (
                         <div className="input-container">

@@ -13,6 +13,25 @@ import '../App.css'; // Ensure the CSS file is linked
 
 
 const Homepage = () => {
+  useEffect(() => {
+    // Create the first script tag
+    const script1 = document.createElement('script');
+    script1.src = 'https://cdn.botpress.cloud/webchat/v2.2/inject.js';
+    script1.async = true;
+    document.body.appendChild(script1);
+
+    // Create the second script tag
+    const script2 = document.createElement('script');
+    script2.src = 'https://files.bpcontent.cloud/2024/10/31/11/20241031115407-95AM147T.js';
+    script2.async = true;
+    document.body.appendChild(script2);
+
+    // Cleanup function to remove the scripts when the component unmounts
+    return () => {
+      document.body.removeChild(script1);
+      document.body.removeChild(script2);
+    };
+  }, []);
   const [showPopup, setShowPopup] = useState(true);
 
   useEffect(() => {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Profile.css';
 import { database } from './firebaseConfig';
 import { ref, orderByChild, equalTo, query, get, update } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
@@ -10,11 +9,10 @@ const Profile = () => {
     const [password, setPassword] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [isSpeakingEnabled, setIsSpeakingEnabled] = useState(false);
-    
-    const speakingRef = useRef(false);
+    const speed = 0.5;
+    const [isSpeakingEnabled, setIsSpeakingEnabled] = useState(false); // Control speaking
     const utteranceRef = useRef(new SpeechSynthesisUtterance());
-    const speed = 1;  // Adjust the speed as per your requirement
+    const speakingRef = useRef(false);
 
     useEffect(() => {
         const handleMouseOver = (e) => {
@@ -128,93 +126,70 @@ const Profile = () => {
     }
 
     return (
-        <div className="profile-container">
-            <div className="profile-header">
-                <h1>Hello {name}</h1>
-                <p>This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-                <button onClick={() => setIsEditing(true)}>Edit profile</button>
-            </div>
-            <div className="profile-content">
-                <div className="profile-info">
-                    <div className="profile-info-header">
-                        <h2>My account</h2>
-                        <button>Settings</button>
-                    </div>
-                    {!isEditing ? (
-                        <div>
-                            <div className="profile-field">
-                                <label>Email:</label>
-                                <span>{email}</span>
-                            </div>
-                            <div className="profile-field">
-                                <label>Name:</label>
-                                <span>{name}</span>
-                            </div>
-                        </div>
-                    ) : (
-                        <form onSubmit={(e) => {
-                            e.preventDefault();
-                            handleSave();
-                        }}>
-                            <div className="profile-field">
-                                <label>Email:</label>
-                                <input 
-                                    type="email" 
-                                    value={email} 
-                                    onChange={(e) => setEmail(e.target.value)} 
-                                    required 
-                                />
-                            </div>
-                            <div className="profile-field">
-                                <label>Name:</label>
-                                <input 
-                                    type="text" 
-                                    value={name} 
-                                    onChange={(e) => setName(e.target.value)} 
-                                    required 
-                                />
-                            </div>
-                            <div className="profile-field">
-                                <label>Password:</label>
-                                <input 
-                                    type="password" 
-                                    value={password} 
-                                    onChange={(e) => setPassword(e.target.value)} 
-                                    required 
-                                />
-                            </div>
-                            <button type="submit">Save Changes</button>
-                            <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
-                        </form>
-                    )}
-                </div>
-                <div className="profile-stats">
-                    <div className="profile-picture">
-                        <img src="https://via.placeholder.com/100" alt="Profile" />
-                    </div>
-                    <div className="profile-actions">
-                        <button>Connect</button>
-                        <button>Message</button>
-                    </div>
-                    <div className="profile-stats-info">
-                        <div>
-                            <span>22</span>
-                            <span>Friends</span>
-                        </div>
-                        <div>
-                            <span>10</span>
-                            <span>Photos</span>
-                        </div>
-                        <div>
-                            <span>89</span>
-                            <span>Comments</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+            <h1>Profile</h1>
             <button onClick={handleSpeakingToggle} style={{ marginBottom: '10px' }}>
                 {isSpeakingEnabled ? 'Disable Speaking' : 'Enable Speaking'}
             </button>
+            {!isEditing ? (
+                <div>
+                    <p><strong>Email:</strong> {email}</p>
+                    <p><strong>Name:</strong> {name}</p>
+                    <button 
+                        style={{ padding: '10px', backgroundColor: '#007BFF', color: 'white', cursor: 'pointer' }}
+                        onClick={() => setIsEditing(true)}
+                    >
+                        Edit Profile
+                    </button>
+                </div>
+            ) : (
+                <div>
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSave();
+                    }}>
+                        <div>
+                            <label>Email:</label>
+                            <input 
+                                type="email" 
+                                value={email} 
+                                onChange={(e) => setEmail(e.target.value)} 
+                                required 
+                            />
+                        </div>
+                        <div>
+                            <label>Name:</label>
+                            <input 
+                                type="text" 
+                                value={name} 
+                                onChange={(e) => setName(e.target.value)} 
+                                required 
+                            />
+                        </div>
+                        <div>
+                            <label>Password :</label>
+                            <input 
+                                type="password" 
+                                value={password} 
+                                onChange={(e) => setPassword(e.target.value)} 
+                                required 
+                            />
+                        </div>
+                        <button 
+                            type="submit" 
+                            style={{ padding: '10px', backgroundColor: '#007BFF', color: 'white', cursor: 'pointer' }}
+                        >
+                            Save Changes
+                        </button>
+                        <button 
+                            style={{ padding: '10px', backgroundColor: 'grey', color: 'white', cursor: 'pointer', marginLeft: '10px' }}
+                            onClick={() => setIsEditing(false)}
+                        >
+                            Cancel
+                        </button>
+                    </form>
+                </div>
+            )}
         </div>
     );
 };
