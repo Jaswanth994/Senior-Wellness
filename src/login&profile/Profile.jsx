@@ -13,6 +13,16 @@ const Profile = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
 
+
+    const fetchQuizResults = async (uid) => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/quiz-results/user/${uid}`);
+            setQuizResults(response.data);
+        } catch (error) {
+            console.error('Error fetching quiz results:', error);
+        }
+    };
+
     useEffect(() => {
         const auth = getAuth();
         const user = auth.currentUser;
@@ -25,15 +35,15 @@ const Profile = () => {
                 if (snapshot.exists()) {
                     const userData = snapshot.val();
                     // console.log("User data:", userData);
-                    const userId = Object.keys(userData)[0];
-                    const userDetails = userData[userId];
+                    const uid = Object.keys(userData)[0];
+                    const userDetails = userData[uid];
 
                     setEmail(userDetails.email);
                     setName(userDetails.name);
                     setPassword(userDetails.password);
                     
                     // Fetch quiz results for the user
-                    // fetchQuizResults(userId);
+                    fetchQuizResults(uid);
                 } else {
                     console.error('No user data found.');
                 }
@@ -48,23 +58,16 @@ const Profile = () => {
         }
     }, []);
 
-    const fetchQuizResults = async (userId) => {
-        try {
-            const response = await axios.get(`http://localhost:5000/api/quiz-results/${userId}`);
-            setQuizResults(response.data);
-        } catch (error) {
-            console.error('Error fetching quiz results:', error);
-        }
-    };
+    
 
     const handleSave = () => {
         if (email) {
             const userRef = query(ref(database, 'users'), orderByChild('email'), equalTo(email));
             get(userRef).then((snapshot) => {
                 if (snapshot.exists()) {
-                    const userId = Object.keys(snapshot.val())[0];
+                    const uid = Object.keys(snapshot.val())[0];
 
-                    update(ref(database, `users/${userId}`), {
+                    update(ref(database, `users/${uid}`), {
                         email,
                         name,
                         password

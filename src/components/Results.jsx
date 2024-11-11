@@ -9,34 +9,34 @@ const Results = () => {
   const navigate = useNavigate();
   const { score, category } = location.state;
 
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [articles, setArticles] = useState([]);
+  // const [loading, setLoading] = useState(true);/
 
-  const suggestions = {
-    type1: "/type1-articles",  // URL for type1 articles page
-    type2: "/type2-articles"   // URL for type2 articles page
-  };
+  // const suggestions = {
+  //   type1: "/type1-articles",  // URL for type1 articles page
+  //   type2: "/type2-articles"   // URL for type2 articles page
+  // };
 
-  const getArticleType = () => {
-    // Show type1 articles for scores greater than 5, else type2
-    return score >= 5 ? 'type1' : 'type2';
-  };
+  // const getArticleType = () => {
+  //   // Show type1 articles for scores greater than 5, else type2
+  //   return score >= 5 ? 'type1' : 'type2';
+  // };
 
   // Fetch articles based on type (type1 or type2)
-  const fetchArticles = async (type) => {
-    try {
-      const response = await axios.get(`http://localhost:5000/api/articles/${type}`);
-      setArticles(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error('Failed to fetch articles:', error);
-    }
-  };
+  // const fetchArticles = async (type) => {
+  //   try {
+  //     const response = await axios.get(`http://localhost:5000/api/articles/${type}`);
+  //     setArticles(response.data);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error('Failed to fetch articles:', error);
+  //   }
+  // };
 
-  useEffect(() => {
-    const articleType = getArticleType();
-    fetchArticles(articleType);
-  }, [score]);
+  // useEffect(() => {
+  //   // const articleType = getArticleType();
+  //   // fetchArticles(articleType);
+  // }, [score]);
 
   const renderMessage = () => {
     if (score === 15) {
@@ -48,21 +48,21 @@ const Results = () => {
     }
   };
 
-  const handleGoToArticles = () => {
-    const articleType = getArticleType();
-    navigate(suggestions[articleType], { state: { articles } });
-  };
+  // const handleGoToArticles = () => {
+  //   const articleType = getArticleType();
+  //   navigate(suggestions[articleType], { state: { articles } });
+  // };
 
   return (
     <div className="results-container">
       <div className="resultcard">
         <h2>Your Score: {score} / 15</h2>
         <p>{renderMessage()}</p>
-        <button className="btn btn-primary" onClick={handleGoToArticles}>
+        {/* <button className="btn btn-primary" onClick={handleGoToArticles}>
           Read Articles for Improvement
-        </button>
+        </button> */}
       </div>
-      <Link to="/" className="btn btn-secondary go-to-home">Go to Home</Link>
+      {/* <Link to="/" className="btn btn-secondary go-to-home">Go to Home</Link> */}
     </div>
   );
 };

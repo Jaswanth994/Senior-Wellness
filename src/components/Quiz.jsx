@@ -60,10 +60,10 @@ const Quiz = () => {
     }
   };
 
-  const saveQuizResult = async (userId, category, score) => {
+  const saveQuizResult = async (uid, category, score) => {
     try {
-      await axios.post('http://localhost:5000/api/quiz-results', {
-        userId,
+      await axios.post('http://localhost:5000/api/quiz-results/add', {
+        uid,
         category,
         score,
       });
