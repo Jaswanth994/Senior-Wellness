@@ -24,10 +24,17 @@
     const ringtoneAudio = useRef(new Audio(ringtone));
 
     const questions = [
-      { text: "Hello! This is from your bank’s security department. Is this John ?", options: ["Yes, speaking", "No"], field: 'identity' },
-      { text: "We noticed some unusual activity on your account. Can you verify your phone number?", options: ["Give phone", "Decline"], field: 'phone' },
-      { text: "Thank you. To confirm, may I have the last four digits of your social security number?", options: ["Give digits", "Decline"], field: 'ssn' },
-      { text: "Lastly, to secure your account, could you provide your full credit card number?", options: ["Give card number", "Decline"], field: 'card' },
+      
+        { text: "Hello! This is from your bank’s security department. Is this John?", options: ["Yes, speaking", "No"], field: 'identity' },
+        { text: "We detected suspicious transactions. Could you confirm your recent purchases over $500?", options: ["Yes, confirm", "I’m not sure"], field: 'purchase' },
+        { text: "To validate your identity, could you please confirm your phone number?", options: ["Provide number", "Decline"], field: 'phone' },
+        { text: "Thank you. We need the last four digits of your social security number for verification.", options: ["Give digits", "Decline"], field: 'ssn' },
+        { text: "Our system flagged your account for potential security risks. May I have the last 4 digits of your bank account?", options: ["Provide last 4 digits", "Decline"], field: 'accountDigits' },
+        { text: "To secure your account, please provide your full credit card number.", options: ["Give card number", "Decline"], field: 'card' },
+        { text: "We need to re-verify your home address to send a new debit card. Could you provide it?", options: ["Provide address", "Decline"], field: 'address' },
+        { text: "For additional security, please tell us the PIN associated with your debit card.", options: ["Provide PIN", "Decline"], field: 'pin' },
+        { text: "Would you like to set up a temporary password? Just confirm your mother’s maiden name.", options: ["Provide maiden name", "Decline"], field: 'maidenName' },
+      
     ];
 
     const startCall = () => {
@@ -161,7 +168,7 @@
                 </motion.div>
               )}
               {showOptions && (
-                <div className="options-container">
+                <div className="options-container1">
                   {questions[currentQuestionIndex].options.map((option, index) => (
                     <button key={index} className="option-button" onClick={() => handleOptionClick(option, questions[currentQuestionIndex].field)}>
                       {option}

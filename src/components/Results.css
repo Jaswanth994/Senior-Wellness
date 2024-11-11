@@ -59,7 +59,7 @@
 /* Back to home button */
 .go-to-home {
     position: fixed;
-    bottom: 80px;
+    top: 30px;
     left: 20px;
     background-color: #2C3E50;
     color: white;

@@ -72,7 +72,7 @@ const LinkChatbot = () => {
       }}
     >
       <div className="chatbot-container">
-        <button className="home" onClick={home}>Homepage</button>
+        <button className="home1" onClick={home}>Homepage</button>
         <h2>Scam Detective</h2>
         {showResult ? (
           renderResult()
