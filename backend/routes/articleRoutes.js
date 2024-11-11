@@ -25,4 +25,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Fetch articles based on type
+router.get('/articles/:type', async (req, res) => {
+  const { type } = req.params;
+  try {
+    const articles = await Article.find({ type });
+    res.json(articles);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 module.exports = router;

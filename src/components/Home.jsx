@@ -21,7 +21,7 @@ const Home = () => {
         
         {/* App Navigation (Clickable) */}
         <div className="option-box">
-          <Link to="/quiz" className="link">
+        <Link to="/quiz/app" className="link">
             <div className="animation-container">
               <Lottie
                 animationData={appNavAnimation}
@@ -35,7 +35,7 @@ const Home = () => {
 
         {/* Web Navigation (Disabled) */}
         <div className="option-box">
-          <div className="link disabled">
+        <Link to="/quiz/web" className="link">
             <div className="animation-container">
               <Lottie
                 animationData={webNavAnimation}
@@ -44,12 +44,12 @@ const Home = () => {
               />
             </div>
             <p className="caption">Web Navigation Quiz</p>
-          </div>
+          </Link>
         </div>
 
         {/* Android Navigation (Disabled) */}
         <div className="option-box">
-          <div className="link disabled">
+        <Link to="/quiz/android" className="link">
             <div className="animation-container">
               <Lottie
                 animationData={androidNavAnimation}
@@ -58,12 +58,12 @@ const Home = () => {
               />
             </div>
             <p className="caption">Android Navigation Quiz</p>
-          </div>
+          </Link>
         </div>
 
         {/* iOS Navigation (Disabled) */}
         <div className="option-box">
-          <div className="link disabled">
+        <Link to="/quiz/desktop" className="link">
             <div className="animation-container">
               <Lottie
                 animationData={iosNavAnimation}
@@ -72,7 +72,7 @@ const Home = () => {
               />
             </div>
             <p className="caption">iOS Navigation Quiz</p>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

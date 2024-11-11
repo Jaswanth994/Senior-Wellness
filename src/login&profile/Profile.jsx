@@ -3,11 +3,13 @@ import './Profile.css';
 import { database } from './firebaseConfig';
 import { ref, orderByChild, equalTo, query, get, update } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
+import axios from 'axios';
 
 const Profile = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [quizResults, setQuizResults] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
 
@@ -22,12 +24,16 @@ const Profile = () => {
             get(userRef).then((snapshot) => {
                 if (snapshot.exists()) {
                     const userData = snapshot.val();
+                    // console.log("User data:", userData);
                     const userId = Object.keys(userData)[0];
                     const userDetails = userData[userId];
 
                     setEmail(userDetails.email);
                     setName(userDetails.name);
                     setPassword(userDetails.password);
+                    
+                    // Fetch quiz results for the user
+                    // fetchQuizResults(userId);
                 } else {
                     console.error('No user data found.');
                 }
@@ -41,6 +47,15 @@ const Profile = () => {
             setLoading(false);
         }
     }, []);
+
+    const fetchQuizResults = async (userId) => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/quiz-results/${userId}`);
+            setQuizResults(response.data);
+        } catch (error) {
+            console.error('Error fetching quiz results:', error);
+        }
+    };
 
     const handleSave = () => {
         if (email) {
@@ -73,18 +88,15 @@ const Profile = () => {
     return (
         <div className="profile-container">
             <div className="profile-header">
-                <h1>Hello {name}</h1>
-                <p>This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-                <button onClick={() => setIsEditing(true)}>Edit profile</button>
+                <h1>Hello, {name}</h1>
+                <p>Welcome to your profile page! Manage your details and view your progress.</p>
+                <button onClick={() => setIsEditing(true)}>Edit Profile</button>
             </div>
             <div className="profile-content">
                 <div className="profile-info">
-                    <div className="profile-info-header">
-                        <h2>My account</h2>
-                        <button>Settings</button>
-                    </div>
+                    <h2>My Account</h2>
                     {!isEditing ? (
-                        <div>
+                        <>
                             <div className="profile-field">
                                 <label>Email:</label>
                                 <span>{email}</span>
@@ -93,7 +105,7 @@ const Profile = () => {
                                 <label>Name:</label>
                                 <span>{name}</span>
                             </div>
-                        </div>
+                        </>
                     ) : (
                         <form onSubmit={(e) => {
                             e.preventDefault();
@@ -131,27 +143,20 @@ const Profile = () => {
                         </form>
                     )}
                 </div>
-                <div className="profile-stats">
-                    <div className="profile-picture">
-                        <img src="https://via.placeholder.com/100" alt="Profile" />
-                    </div>
-                    <div className="profile-actions">
-                        <button>Connect</button>
-                        <button>Message</button>
-                    </div>
-                    <div className="profile-stats-info">
-                        <div>
-                            <span>22</span>
-                            <span>Friends</span>
-                        </div>
-                        <div>
-                            <span>10</span>
-                            <span>Photos</span>
-                        </div>
-                        <div>
-                            <span>89</span>
-                            <span>Comments</span>
-                        </div>
+                <div className="profile-progress">
+                    <h2>Progress</h2>
+                    <div className="quiz-results">
+                        {quizResults.length > 0 ? (
+                            quizResults.map((result) => (
+                                <div key={result._id} className="quiz-result">
+                                    <p>Category: {result.category}</p>
+                                    <p>Score: {result.score}</p>
+                                    <p>Date: {new Date(result.date).toLocaleDateString()}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No quiz results found.</p>
+                        )}
                     </div>
                 </div>
             </div>

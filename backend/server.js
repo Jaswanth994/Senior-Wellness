@@ -9,7 +9,7 @@ const userRoutes = require('./routes/userRoutes');
 const quizRoutes = require('./routes/quizRoutes');
 const articleRoutes = require('./routes/articleRoutes');
 const quizResultRoutes = require('./routes/quizResultRoutes');
-
+// const quizQuestionRoutes=require('../quizQuestionRoutes');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -28,6 +28,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/quizzes', quizRoutes);
 app.use('/api/quiz-results', quizResultRoutes); 
 app.use('/api/articles', articleRoutes);
+// app.use('/api/questions',quizQuestionRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

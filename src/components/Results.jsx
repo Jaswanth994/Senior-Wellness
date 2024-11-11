@@ -1,27 +1,42 @@
-import React, { useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
-import axios from 'axios'; // Import Axios
+// Components/TechHelp/Results.jsx
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Results.css';
 
 const Results = () => {
   const location = useLocation();
-  const { score, userName } = location.state; // Assuming userName is passed in location.state
+  const navigate = useNavigate();
+  const { score, category } = location.state;
 
-  const suggestions = [
-    { topic: "Beginner Appnavigation Articles", url: "/beginner-strategies" },
-    { topic: "Intermediate Appnavigation Techniques", url: "/intermediate-tactics" },
-    { topic: "Advanced Appnavigation Concepts", url: "/advanced-techniques" }
-  ];
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const getArticleSuggestion = () => {
-    if (score === 15) {
-      return suggestions[2]; 
-    } else if (score >= 10) {
-      return suggestions[1]; 
-    } else {
-      return suggestions[0]; 
+  const suggestions = {
+    type1: "/type1-articles",  // URL for type1 articles page
+    type2: "/type2-articles"   // URL for type2 articles page
+  };
+
+  const getArticleType = () => {
+    // Show type1 articles for scores greater than 5, else type2
+    return score >= 5 ? 'type1' : 'type2';
+  };
+
+  // Fetch articles based on type (type1 or type2)
+  const fetchArticles = async (type) => {
+    try {
+      const response = await axios.get(`http://localhost:5000/api/articles/${type}`);
+      setArticles(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Failed to fetch articles:', error);
     }
   };
+
+  useEffect(() => {
+    const articleType = getArticleType();
+    fetchArticles(articleType);
+  }, [score]);
 
   const renderMessage = () => {
     if (score === 15) {
@@ -33,35 +48,19 @@ const Results = () => {
     }
   };
 
-  // Function to save quiz result
-  const saveQuizResult = async () => {
-    try {
-      // Send a POST request to the backend to save the quiz result
-      const response = await axios.post('http://localhost:5000/api/quizResult/save', {
-        userName: userName || 'Anonymous', // Assuming userName is available
-        score: score
-      });
-      console.log('Result saved:', response.data.message);
-    } catch (error) {
-      console.error('Failed to save quiz result:', error);
-    }
+  const handleGoToArticles = () => {
+    const articleType = getArticleType();
+    navigate(suggestions[articleType], { state: { articles } });
   };
-
-  // useEffect to save the result when the component mounts
-  useEffect(() => {
-    saveQuizResult();
-  }, [score]);
-
-  const suggestion = getArticleSuggestion();
 
   return (
     <div className="results-container">
       <div className="resultcard">
         <h2>Your Score: {score} / 15</h2>
         <p>{renderMessage()}</p>
-        <Link to="/article-page" className="btn btn-primary">
+        <button className="btn btn-primary" onClick={handleGoToArticles}>
           Read Articles for Improvement
-        </Link>
+        </button>
       </div>
       <Link to="/" className="btn btn-secondary go-to-home">Go to Home</Link>
     </div>

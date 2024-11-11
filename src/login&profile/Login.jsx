@@ -1,26 +1,59 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import annyang from 'annyang';
-import { useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserLocalPersistence } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
 import { database } from './firebaseConfig';
+import axios from 'axios';
 import './Login.css';
-import loginImage from '../assets/loginimage.png';  // Updated path for your uploaded image
+import loginImage from '../assets/loginimage.png';
 import 'font-awesome/css/font-awesome.min.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const [isSignUp, setIsSignUp] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
     const [output, setOutput] = useState('Say "email", "password", "name", "submit", or "login".');
-    const [isSignUp, setIsSignUp] = useState(true);
-    const [permissionGranted, setPermissionGranted] = useState(false);
     const navigate = useNavigate();
+    const [permissionGranted, setPermissionGranted] = useState(false);
+    const location = useLocation();
     const auth = getAuth();
 
-    // Request microphone permission on mount
+    // Set persistence on initial load
     useEffect(() => {
+        setPersistence(auth, browserLocalPersistence)
+            .catch((error) => {
+                console.error("Error setting persistence:", error);
+            });
+    }, [auth]);
+
+    // Check if the user is already logged in and redirect if so
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                navigate('/');
+            }
+        });
+        return unsubscribe;
+    }, [auth, navigate, location.state]);
+
+    const storeUserInMongoDB = async (user) => {
+        try {
+            await axios.post('http://localhost:5000/api/users/create-user', {
+                uid: user.uid,
+                email: user.email,
+                name: name,
+            });
+            setOutput('User data stored in MongoDB successfully!');
+        } catch (error) {
+            setOutput(`Error storing user data in MongoDB: ${error.message}`);
+        }
+    };
+
+     // Request microphone permission on mount
+     useEffect(() => {
         const requestMicrophonePermission = async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -36,6 +69,7 @@ const Login = () => {
         requestMicrophonePermission();
     }, []);
 
+
     const handleSignUp = useCallback(async () => {
         if (!email || !password || !name) {
             setOutput('Please enter all email, password, and name.');
@@ -47,17 +81,20 @@ const Login = () => {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            await set(ref(database, 'users/' + user.uid), {
-                email: user.email,
-                name: name
-            });
-
+            await Promise.all([
+                storeUserInMongoDB(user),  // Store in MongoDB
+                set(ref(database, 'users/' + user.uid), {  // Store in Firebase
+                    email: user.email,
+                    name: name
+                })
+            ]);
             setOutput('User signed up successfully!');
-            navigate(`/HomePage?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`);
+            const redirectPath = location.state?.from || '/';
+            navigate(redirectPath);
         } catch (error) {
             setOutput(`Error signing up: ${error.message}`);
         }
-    }, [email, password, name, auth, navigate]);
+    }, [email, password, name, auth, navigate, location.state]);
 
     const handleLogin = useCallback(async () => {
         if (!email || !password) {
@@ -65,13 +102,16 @@ const Login = () => {
             return;
         }
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
             setOutput('Login successful!');
-            navigate(`/HomePage?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`);
+            const user = userCredential.user;
+            // await storeUserInMongoDB(user);
+            const redirectPath = location.state?.from || '/';
+            navigate(redirectPath);
         } catch (error) {
             setOutput(`Login failed: ${error.message}`);
         }
-    }, [email, password, auth, navigate, name]);
+    }, [email, password, auth, navigate, location.state]);
 
     const handleSubmit = useCallback(() => {
         if (isSignUp) {
@@ -86,7 +126,7 @@ const Login = () => {
             const commands = {
                 'email *emailValue': (emailValue) => {
                     setEmail(emailValue.trim());
-                    setOutput(`Email set to: ${emailValue}`);
+                    // setOutput(Email set to : ${emailValue});
                 },
                 'password *passwordValue': (passwordValue) => {
                     setPassword(passwordValue.trim());
@@ -94,7 +134,7 @@ const Login = () => {
                 },
                 'name *nameValue': (nameValue) => {
                     setName(nameValue.trim());
-                    setOutput(`Name set to: ${nameValue}`);
+                    // setOutput(Name set to: ${nameValue});
                 },
                 'sign up': () => {
                     handleSubmit();
@@ -117,29 +157,17 @@ const Login = () => {
     }, [handleSubmit, permissionGranted]);
 
     return (
-        <div className="login-container" >
-            {/* <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Senior Wellness</a>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Have a nice day" aria-label="Search" />
-                        </form>
-                    </div>
-                </div>
-            </nav> */}
-
+        <div className="login-container">
             <div className="login-box">
                 <h2>{isSignUp ? 'Sign Up' : 'Login'}</h2>
                 <p>{output}</p>
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        handleSubmit();
+                        isSignUp ? handleSignUp() : handleLogin();
                     }}
                 >
                     <div className="input-container">
-                        <i className="fa fa-envelope icon"></i>
                         <input
                             type="email"
                             value={email}
@@ -149,7 +177,6 @@ const Login = () => {
                         />
                     </div>
                     <div className="input-container">
-                        <i className="fa fa-lock icon"></i>
                         <input
                             type="password"
                             value={password}
@@ -160,7 +187,6 @@ const Login = () => {
                     </div>
                     {isSignUp && (
                         <div className="input-container">
-                            <i className="fa fa-user icon"></i>
                             <input
                                 type="text"
                                 value={name}
@@ -172,7 +198,6 @@ const Login = () => {
                     )}
                     <button type="submit">{isSignUp ? 'Sign Up' : 'Login'}</button>
                 </form>
-
                 <div className="toggle-mode">
                     {isSignUp ? (
                         <p>Already have an account? <button onClick={() => setIsSignUp(false)}>Login</button></p>
