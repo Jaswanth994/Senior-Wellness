@@ -41,6 +41,19 @@ const Homepage = () => {
             document.removeEventListener('mousemove', handleMouseOver);
         };
     }, [isSpeakingEnabled]);
+    useEffect(() => {
+      // Check if Botpress Webchat is available and initialize it
+      if (window.botpressWebChat) {
+        window.botpressWebChat.init({
+          hostUrl: 'https://cdn.botpress.cloud/webchat/v2.2',
+          botId: 'YOUR_BOT_ID',
+          // Optional configurations
+          // extraStylesheet: 'path-to-your-custom-styles.css',
+          // showMessageDate: true,
+        });
+      }
+    }, []);
+     
 
     const extractSentence = (text, offset) => {
         const beforeText = text.slice(0, offset);
@@ -134,6 +147,9 @@ const Homepage = () => {
           description="Tips and tricks to efficiently manage your online banking." 
           link="/online-banking"  // Add links for routing
         />
+         {/* <div className="homepage">
+      <button onClick={() => window.botpressWebChat.toggle()}>Chat with us!</button>
+    </div> */}
       </section>
 
       {/* Footer Section */}
