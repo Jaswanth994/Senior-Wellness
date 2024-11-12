@@ -73,7 +73,7 @@ const Profile = () => {
 
     const fetchQuizResults = async (uid) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/quiz-results/user/${uid}`);
+            const response = await axios.get(`https://senior-wellness-1.onrender.com/api/quiz-results/user/${uid}`);
             setQuizResults(response.data);
         } catch (error) {
             console.error('Error fetching quiz results:', error);

@@ -28,7 +28,7 @@ const Quiz = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/quizzes/${category}`);
+        const response = await axios.get(`https://senior-wellness-1.onrender.com/api/quizzes/${category}`);
         setQuestions(response.data);
       } catch (error) {
         console.error('Failed to fetch quiz questions:', error);
@@ -62,7 +62,7 @@ const Quiz = () => {
 
   const saveQuizResult = async (uid, category, score) => {
     try {
-      await axios.post('http://localhost:5000/api/quiz-results/add', {
+      await axios.post('https://senior-wellness-1.onrender.com/api/quiz-results/add', {
         uid,
         category,
         score,

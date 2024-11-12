@@ -41,7 +41,7 @@ const Login = () => {
 
     const storeUserInMongoDB = async (user) => {
         try {
-            await axios.post('http://localhost:5000/api/users/create-user', {
+            await axios.post('https://senior-wellness-1.onrender.com/api/users/create-user', {
                 uid: user.uid,
                 email: user.email,
                 name: name,
