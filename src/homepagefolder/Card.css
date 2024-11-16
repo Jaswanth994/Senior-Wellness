@@ -1,4 +1,4 @@
-/*Cards Section Styles (Card.css) */
+/* Cards Section Styles (Card.css) */
 .section {
   display: flex;
   justify-content: space-around;
@@ -17,10 +17,10 @@
 }
 
 .card {
-  background-color: #f3f6f9;
+  background-color: white;
   color: #333333;
-  padding: 5px;
-  width: 350px;
+  
+  width: 300px;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -34,26 +34,38 @@
   cursor: pointer;
 }
 
-/* Center the animation */
- .lottieanimation {
+/* Circle container for the animation */
+.circle-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Center the animation within the circle */
+.lottieanimation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .card h3 {
-  margin: 100px 20;
+  margin-top: 20px;
   color: #004d40;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
 .card p {
   margin-top: 10px;
   color: #555;
-  font-size: 1.5rem;
-} 
-
+  font-size: 1.2rem;
+}

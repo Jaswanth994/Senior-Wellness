@@ -1,28 +1,28 @@
 import React from 'react';
 import Lottie from 'lottie-react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './Card.css'; // Import Header styles
+import { Link } from 'react-router-dom';
+import './Card.css';
 
 const Card = ({ animationData, title, description, link }) => {
   return (
-    <Link to={link} className="card"> {/* Wrap the card content in a Link */}
-      <div className="lottieanimation">
-        <Lottie animationData={animationData} />
+    <Link to={link} className="card">
+      <div className="circle-container">
+        <div className="lottieanimation">
+          <Lottie animationData={animationData} />
+        </div>
       </div>
       <h3>{title}</h3>
-      <p>{description}</p> {/* Display the description here */}
+      <p>{description}</p>
     </Link>
   );
 };
 
-// Define the prop types
 Card.propTypes = {
-  animationData: PropTypes.object, // Make this optional
+  animationData: PropTypes.object,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired, // Add a link prop to navigate
+  link: PropTypes.string.isRequired,
 };
 
 export default Card;
-

@@ -13,7 +13,7 @@
 }
 
 .popup-content {
-  background-color: white;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -34,5 +34,34 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+.popup-title {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+.popup-message {
+  font-size: 16px;
+  color: #555555;
+}
+
+.logo-animation {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  animation: logo-slide 1s forwards ease-in-out;
+}
+
+@keyframes logo-slide {
+  from {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100px);
+    opacity: 0;
   }
 }

@@ -10,16 +10,17 @@ html, body {
 }
 
 /* Shared Styles for Containers */
-.container {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 800px;
+/* Background Image */
+.background-style {
+  background: url('../assets/bimg.png') no-repeat center center fixed;
+  background-size: cover;
+
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
-  margin-top: 150px;
-  animation: fadeInUp 1s ease-in-out;
-  text-align: center;
+  height: 100%;
+  z-index: -1;
 }
 
 /* 

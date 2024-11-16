@@ -1,45 +1,27 @@
 /* Header Styles (Header.css) */
- .header {
-  background-color: #795548;
+.header {
+  background-color: lightgray; /* Initial color (color1) */
   color: white;
-  padding: 1px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   top: 0;
-  width: 100vw;
-  z-index: 1000;
+  left: 0; /* Ensures the header starts at the very left */
+  width: 100vw; /* Full viewport width */
+  z-index: 100;
+  padding: 10px 30px;
+  transition: background-color 0.3s ease; /* Smooth transition for color change */
   box-sizing: border-box;
-  box-shadow: 0 4px 2px -2px gray;
-} 
+}
 
-/* .header-title-container {
-  display: flex;
-  align-items: center; /* Ensures the Lottie and title are aligned vertically */
-
-/*} */
- /*.header-title {
-  color: white;
-  margin: -10px -10px 0px -10px;
-  font-weight: bolder;
-  font-size: 2rem;
-/*}  */
-.header-title-container {
-  display: flex;
-  align-items: center;
- 
+.header.scrolled {
+  background-color: lightyellow; /* Color when scrolled (color2) */
 }
 
 .header-title {
-  color: white;
-  margin: -10px;
-  font-weight: bolder;
-  font-size: 3rem;
-  padding: 0; /* If padding adds unwanted space, you can remove it */
+  font-weight: bold;
+  font-size: 2rem;
+  font-style: ;
+  color: black;
 }
-
- .lottie-container {
-  margin-left: 1px; /* Adjust spacing between title and Lottie animation */
-} 
-

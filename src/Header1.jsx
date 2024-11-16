@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-title-container">
-        <h1 className="header-title">Senior Wellness</h1>
+        {/* <h1 className="header-title">Senior Wellness</h1> */}
         <div className="lottie-container">
           <Lottie animationData={animationData} style={{ width: 40, height: 40 }} />
         </div>

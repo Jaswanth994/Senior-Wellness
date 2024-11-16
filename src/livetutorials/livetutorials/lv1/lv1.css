@@ -6,29 +6,28 @@ body, html {
   align-items: center;
   min-height: 100vh;
   width: 100vw;
-  background-color: #f0f0f0;
+  background-image: url('/path-to-your-background-image.jpg'); /* Replace with your actual image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: black;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
 
-.guide-container {
-  width: 90%;
-  max-width: 1200px;
+.image-and-animation-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px; /* Limits the width of the content */
   padding: 20px;
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  position: relative;
-  box-sizing: border-box;
-  margin: 20px 0;
 }
 
 .image-container {
+  max-width: 300px;
+  margin-right: 20px;
   position: relative;
-  display: inline-block;
-  max-width: 100%;
 }
 
 .step-image {
@@ -37,52 +36,48 @@ body, html {
   border-radius: 1rem;
 }
 
-.highlight-box {
+.arrow-container {
   position: absolute;
-  border: 2px solid rgba(255, 0, 0, 0.7);
-  background: rgba(255, 255, 255, 0.2);
-  pointer-events: auto;
-  z-index: 1;
-  cursor: pointer;
+  top: 45%; /* Adjust vertical positioning to point at WhatsApp icon */
+  left: 110%; /* Horizontal positioning of the arrow */
+  display: flex;
+  align-items: center;
+}
+
+.arrow-text {
+  font-size: 14px;
+  font-weight: bold;
+  background-color: yellow;
+  padding: 5px 8px;
+  border-radius: 3px;
+  margin-right: 8px;
 }
 
 .arrow {
-  position: absolute;
-  z-index: 2;
   width: 0;
   height: 0;
-}
-
-.arrow-up {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid rgba(255, 0, 0, 0.7);
-}
-
-.arrow-right {
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid rgba(255, 0, 0, 0.7);
-}
-
-.arrow-left {
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid rgba(255, 0, 0, 0.7);
+  border-top: 20px solid red;
 }
 
 .button-container {
-  margin-top: 20px;
+  display: ruby-text;
+  flex-direction: column;
+  align-items: flex-start ;
+  margin-left: auto; /* Pushes buttons to the right side of the screen */
 }
 
 .button-container button {
-  margin: 10px 5px;
+  margin: 10px 0;
   padding: 8px 16px;
   font-size: 14px;
   cursor: pointer;
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s;
+  width: 180px; /* Adjust button width if needed */
+  text-align: left;
 }
 
 .prev-button,
@@ -98,13 +93,6 @@ body, html {
   cursor: not-allowed;
 }
 
-.next-button:disabled::after {
-  content: ' ✓';
-  color: white;
-  font-weight: bold;
-  margin-left: 5px;
-}
-
 .prev-button:hover:not(:disabled),
 .next-button:hover:not(:disabled),
 .replay-button:hover:not(:disabled) {
@@ -114,101 +102,17 @@ body, html {
 .speak-button {
   background-color: #4caf50;
   color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 5px;
-  transition: background-color 0.3s;
 }
 
-.speak-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.speak-button:hover:not(:disabled) {
+  background-color: #388e3c;
 }
 
-.image-and-animation-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.home-button {
+  background-color: #ff9800;
+  color: white;
 }
 
-@media (max-width: 600px) {
-  body, html {
-    overflow: none;
-  }
-
-  .guide-container {
-    padding: 15px;
-    border-radius: 0.75rem;
-  }
-
-  .step-image {
-    width: 100%;
-  }
-
-  .highlight-box {
-    border-width: 1.5px;
-  }
-
-  .button-container button {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-
-  .speak-button {
-    padding: 6px 12px;
-    font-size: 10px;
-  }
-
-  .arrow {
-    width: 0;
-    height: 0;
-    border-width: 6px;
-  }
-}
-
-@media (min-width: 600px) and (max-width: 1024px) {
-  body, html {
-    overflow: none;
-  }
-
-  .guide-container {
-    padding: 10px;
-    border-radius: 1rem;
-  }
-
-  .step-image {
-    width: 90%;
-  }
-
-  .button-container button {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-
-  .speak-button {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .guide-container {
-    padding: 30px;
-  }
-
-  .step-image {
-    width: 80%;
-  }
-
-  .button-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-  }
-
-  .speak-button {
-    padding: 10px 20px;
-    font-size: 16px;
-  }
+.home-button:hover:not(:disabled) {
+  background-color: #e68900;
 }
