@@ -11,7 +11,7 @@ import './App.css';
 import Home from './components/Home.jsx';
 import Quiz from './components/Quiz.jsx';
 import Results from './components/Results.jsx';
-// import ArticlePage from './components/Articelpage.jsx';
+import ArticlesPage from './components/ArticlesPage.jsx';
 import Livetutorial from './livetutorials/lv.jsx';
 import LocationSharingGuide from './livetutorials/livetutorials/lv1/lv1.jsx';
 import MapsGuide from './livetutorials/livetutorials/lv2/lv2.jsx';
@@ -111,6 +111,7 @@ function App() {
         {/* <Route path="/type1-articles" element={<ArticlesPage />} /> */}
         {/* <Route path="/type2-articles" element={<ArticlesPage />} /> */}
         <Route path="/quizhome" element={<Home />} />
+        <Route path="/article-page" element={<ArticlesPage />} />
         {/* <Route path="/article-page" element={<ArticlePage />} /> */}
         <Route path="/livetutorial" element={<Livetutorial />} />
         <Route path="/option/location-guide" element={<LocationSharingGuide />} />
