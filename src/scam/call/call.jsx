@@ -4,7 +4,7 @@
   import { useNavigate } from 'react-router-dom';
   import './call.css';
   import hackerAnimationData from './images/Scammer.json';
-  import userImage from './images/OldMan.json';
+  import userImage from './images/oldman1.json';
   import ringtone from './sounds/ring.wav';
   import Header from '../../Header';
 
@@ -161,7 +161,7 @@
             <div className="user-section">
             <Lottie 
                 options={{ animationData: userImage, loop: true, autoplay: true }}
-                height={200} width={200}
+                height={400} width={400}
               />
               {chatHistory.length > 0 && chatHistory[chatHistory.length - 1].sender === 'user' && (
                 <motion.div className="chat-bubble user-cloud" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>

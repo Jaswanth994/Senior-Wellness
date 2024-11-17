@@ -7,6 +7,9 @@ import Footer from '../Footer';
 import animationData from '../assets/Animationscam.json';
 import animationtuto from '../assets/Animationtut.json';
 import animationtech from '../assets/AnimationTech.json';
+import animationund from '../assets/UNDERSTANDINGTECHHH.json';
+import animationbank from '../assets/onlinebanking.json';
+import animationscam from '../assets/commonscams.json';
 import './HomePage.css';
 import '../App.css';
 
@@ -162,6 +165,7 @@ const Homepage = () => {
         style={{ cursor: 'pointer' }}
       >
         <Card
+          animationData={animationund} 
           title="Understanding Tech"
           description="A comprehensive guide to understanding modern technology."
           // link="/understanding-tech"
@@ -172,6 +176,7 @@ const Homepage = () => {
         style={{ cursor: 'pointer' }}
       >
         <Card
+          animationData={animationscam} 
           title="Common Scams"
           description="Learn about the most common scams and how to avoid them."
           // link="/common-scams"
@@ -182,6 +187,7 @@ const Homepage = () => {
         style={{ cursor: 'pointer' }}
       >
         <Card
+       animationData={animationbank} 
           title="Mastering Online Banking"
           description="Tips and tricks to efficiently manage your online banking."
           // link="/online-banking"

@@ -59,6 +59,7 @@ function App() {
       else if (command.includes('scam home')) navigate('/scamhome');
       else if (command.includes('call')) navigate('/call');
       else if (commad.includes('Message')) navigate('/link-chatbot');
+      
       else console.log('Unrecognized command');
     };
 
