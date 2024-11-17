@@ -4,7 +4,7 @@
   import { useNavigate } from 'react-router-dom';
   import './call.css';
   import hackerAnimationData from './images/Scammer.json';
-  import userImage from './images/OldMan.json';
+  import userImage from './images/oldman1.json';
   import ringtone from './sounds/ring.wav';
 
 
