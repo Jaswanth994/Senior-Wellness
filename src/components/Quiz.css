@@ -16,7 +16,7 @@
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     padding: 1.5rem; /* Slightly smaller padding */
-    max-width: 600px; /* Smaller quiz card */
+    max-width: 700px; /* Smaller quiz card */
     width: 100%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     margin-top: 150px;
@@ -30,6 +30,7 @@
     color: #2C3E50; 
     font-size: 1.8rem; /* Smaller question heading */
     margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 /* Question box styling */
@@ -81,12 +82,12 @@
 }
 
 /* Button for next question */
-.btn-primary {
+/* .btn-primary {
     background-color: #F5A623; 
     color: white;
     border: none;
     padding: 12px 25px;
-    font-size: 1.3rem; /* Slightly smaller button text */
+    font-size: 1.3rem; 
     border-radius: 8px;
     margin-top: 20px;
     cursor: pointer;
@@ -96,7 +97,7 @@
 .btn-primary:hover {
     background-color: #FFCC33; 
     transform: scale(1.1);
-}
+} */
 
 /* Alert box */
 .alert {
@@ -134,14 +135,17 @@
   .btn-primary {
     padding: 10px 20px;
     margin: 10px; /* Add margin for spacing */
-    background-color: #007bff; /* Example button color */
+    background-color: #88919b; /* Example button color */
     color: white; /* Text color */
     border: none;
     border-radius: 5px; /* Optional: to round the corners */
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+  .next-button {
+    background-color: #88919b;
+    color: white;
+  }
   .btn-primary:hover {
     background-color: #0056b3; /* Darker shade on hover */
   }

@@ -3,12 +3,29 @@
     text-align: center;
     background-color: #f5f5f5;
     min-height: 100vh;
+    margin-top: 35px;
   }
   
-  .articles-container h1 {
+  /* .articles-container h1 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: #343a40;
+    background-color: #;
+  } */
+
+  .articles-container h1{
+    font-family: 'Poppins', sans-serif; /* Use a clean, modern font */
+    font-size: 2.5rem; /* Adjust size as needed */
+    color: #004d40; 
+    font-weight: bold;
+    /* background: linear-gradient(90deg, #007bff, #00c6ff); */
+    background-color: rgb(240, 235, 235);
+    /* Gradient background */
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 28px; /* Rounded corners */
+    /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);  */
+    /* animation: fadeIn 1.2s ease-out; */
   }
   
   .articles-grid {

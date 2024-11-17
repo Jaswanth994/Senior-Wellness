@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
+import Header from '../Header';
 import './ArticlesPage.css';
 
 const ArticlesPage = () => {
   const location = useLocation();
   const { category, score } = location.state;
   const [articles, setArticles] = useState([]);
+  const navigate = useNavigate();
 
   // Sample articles for demonstration
   const allArticles = {
@@ -38,6 +40,22 @@ const ArticlesPage = () => {
   };
 
   useEffect(() => {
+    const handlePopState = (event) => {
+      // When the user presses the "Back" button, navigate to home
+      navigate('/');
+    };
+
+    // Listen to the popstate event
+    window.addEventListener('popstate', handlePopState);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [navigate]);
+
+
+  useEffect(() => {
     // Dynamically load articles based on category and score
     const categoryArticles = allArticles[category] || [];
     const filteredArticles = score >= 3 ? categoryArticles.slice(2) : categoryArticles.slice(0, 4);
@@ -45,6 +63,8 @@ const ArticlesPage = () => {
   }, [category, score]);
 
   return (
+    <div> 
+             <Header />
     <div className="articles-container">
       <h1>{category.charAt(0).toUpperCase() + category.slice(1)} Articles</h1>
       <div className="articles-grid">
@@ -55,6 +75,7 @@ const ArticlesPage = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

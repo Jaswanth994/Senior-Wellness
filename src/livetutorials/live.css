@@ -12,9 +12,14 @@ body, html {
     font-family: Arial, sans-serif;
   }
   
+  .hd{
+    margin-top: 90px;
+  }
   .guide-container {
+    /* margin-top: 40px; */
     width: 90%;
     max-width: 1200px;
+    display: flex;
     padding: 20px;
     background-color: white;
     border-radius: 1rem;
@@ -25,7 +30,9 @@ body, html {
     margin: 20px 0;
   }
    
-
+  .contan{
+    order: 1;
+  }
  .image-container1 {
     position: relative;
     display: inline-block;
@@ -81,12 +88,17 @@ body, html {
   }
   
   .button-container {
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    order: 0;
+    justify-content: flex-start; 
+    align-items: center; 
+    height: 100%; 
+    margin: 15px;
   }
   
   .button-container button {
     margin: 0 10px;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     font-size: 16px;
     cursor: pointer;
     border: none;
@@ -95,17 +107,17 @@ body, html {
   }
   
   .prev-button {
-    background-color: #007bff;
+    background-color:#88919b;
     color: white;
   }
   
   .replay-button {
-    background-color: #007bff;
+    background-color:#88919b;
     color: white;
   }
   
   .next-button {
-    background-color: #007bff;
+    background-color: #88919b;
     color: white;
   }
   

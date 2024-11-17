@@ -13,18 +13,22 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 700px;
   }
   
   .result-card h2 {
-    color: #343a40;
+    color: #354034;
     margin-bottom: 10px;
+    font-size: 50px;
+    font-weight: bold;
   }
   
   .result-card p {
     color: #6c757d;
     margin-bottom: 20px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
   }
   
   .btn {
@@ -34,7 +38,7 @@
     font-weight: bold;
     text-align: center;
     color: #fff;
-    background-color: #007bff;
+    background-color: #88919b;
     border: none;
     border-radius: 5px;
     text-decoration: none;

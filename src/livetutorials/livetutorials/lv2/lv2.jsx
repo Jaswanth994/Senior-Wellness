@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../live.css';
+import Header from '../../../Header.jsx';
+
 
 // Import images
 import step1 from './images/map.jpg';
@@ -142,8 +144,12 @@ const MapsGuide = () => {
     }, [currentStep]); 
 
     return (
+        <div>
+          <Header />
+          <h2 className='hd'>How to Use Google Maps</h2>
         <div className="guide-container">
-            <h2>How to Use Google Maps</h2>
+            <div className='contan' >
+            
 
             <div className="image-container1">
                 <motion.img
@@ -225,7 +231,7 @@ const MapsGuide = () => {
 
             <p>{description}</p>
             <p className="info-text">{info}</p>
-
+            </div>
             <div className="button-container">
                 <motion.button
                     className="prev-button"
@@ -261,15 +267,16 @@ const MapsGuide = () => {
                 >
                     Hear Instructions
                 </motion.button>
-                <motion.button
+                {/* <motion.button
           className="home-button"
           onClick={handleHome}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
           Go to Homepage
-        </motion.button>
+        </motion.button> */}
             </div>
+        </div>
         </div>
     );
 };

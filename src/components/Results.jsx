@@ -28,7 +28,7 @@ const Results = () => {
   return (
     <div className="results-container">
       <div className="result-card">
-        <h2>Your Score: {score} / 15</h2>
+        <h2>Your Score: {score} / 5</h2>
         <p>{renderMessage()}</p>
         <button className="btn btn-primary" onClick={handleNavigateToLearning}>
           Explore Learning Materials

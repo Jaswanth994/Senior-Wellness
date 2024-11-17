@@ -4,6 +4,7 @@ import { database } from './firebaseConfig';
 import { ref, orderByChild, equalTo, query, get, update } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 import axios from 'axios';
+import Header from "../Header";
 
 const Profile = () => {
     const [email, setEmail] = useState('');
@@ -146,6 +147,9 @@ const Profile = () => {
     }
 
     return (
+        <div>
+            <Header />
+        
         <div className="profile-container">
             <div className="profile-header">
                 <h1>Hello, {name}</h1>
@@ -209,7 +213,7 @@ const Profile = () => {
                         {quizResults.length > 0 ? (
                             quizResults.map((result) => (
                                 <div key={result._id} className="quiz-result">
-                                    <p>Category: {result.category}</p>
+                                    <p>Quiz Category: {result.category}</p>
                                     <p>Score: {result.score}</p>
                                     <p>Date: {new Date(result.date).toLocaleDateString()}</p>
                                 </div>
@@ -220,9 +224,8 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
-            <button onClick={handleSpeakingToggle} style={{ marginBottom: '10px' }}>
-                {isSpeakingEnabled ? 'Disable Speaking' : 'Enable Speaking'}
-            </button>
+           
+        </div>
         </div>
     );
 };

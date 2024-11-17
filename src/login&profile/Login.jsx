@@ -1,3 +1,4 @@
+// src/login&profile/Login.jsx
 import React, { useState, useEffect, useCallback } from 'react';
 import annyang from 'annyang';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -5,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 import { ref, set } from 'firebase/database';
 import { database } from './firebaseConfig';
 import axios from 'axios';
+import Header from '../Header1';
 import './Login.css';
 import loginImage from '../assets/loginimage.png';
 import 'font-awesome/css/font-awesome.min.css';
@@ -113,13 +115,13 @@ const Login = () => {
         }
     }, [email, password, auth, navigate, location.state]);
 
-    const handleSubmit = useCallback(() => {
-        if (isSignUp) {
-            handleSignUp();
-        } else {
-            handleLogin();
-        }
-    }, [isSignUp, handleSignUp, handleLogin]);
+  const handleSubmit = useCallback(() => {
+    if (isSignUp) {
+      handleSignUp();
+    } else {
+      handleLogin();
+    }
+  }, [isSignUp, handleSignUp, handleLogin]);
 
     useEffect(() => {
         if (annyang && permissionGranted) {
@@ -152,16 +154,16 @@ const Login = () => {
                 },
             };
 
-            annyang.addCommands(commands);
-            annyang.start({ autoRestart: true, continuous: true });
+      annyang.addCommands(commands);
+      annyang.start({ autoRestart: true, continuous: true });
 
-            return () => {
-                annyang.abort();
-            };
-        } else if (!annyang) {
-            setOutput('Voice recognition not supported on this browser.');
-        }
-    }, [handleSubmit, permissionGranted]);
+      return () => {
+        annyang.abort();
+      };
+    } else if (!annyang) {
+      setOutput('Voice recognition not supported on this browser.');
+    }
+  }, [handleSubmit, permissionGranted]);
 
     return (
         <div className="login-container">

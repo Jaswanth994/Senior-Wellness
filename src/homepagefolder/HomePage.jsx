@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import Header from '../Header';
 import Hero from './Hero';
 import Card from './Card';
@@ -11,6 +11,7 @@ import './HomePage.css';
 import '../App.css';
 
 const Homepage = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     // Helper function to load a script
     const loadScript = (src, onLoad, onError) => {
@@ -49,6 +50,9 @@ const Homepage = () => {
   const utteranceRef = useRef(new SpeechSynthesisUtterance());
   const speed = 1;
 
+  const handleCardClick = (category, score) => {
+    navigate('/article-page', { state: { category, score } });
+  };
   useEffect(() => {
     const handleMouseOver = (e) => {
       if (!isSpeakingEnabled) return;
@@ -116,12 +120,16 @@ const Homepage = () => {
             {/* Hero Section */}
             <Hero />
 
-      <button 
+      {/* <button 
         onClick={handleSpeakingToggle} 
         style={{ marginTop: '40px', marginBottom: '0.5px', width: '200px', height: '50px' }}
       >
         {isSpeakingEnabled ? 'Disable Speaking' : 'Enable Speaking'}
-      </button>
+      </button> */}
+
+       <div className='Headings'>
+        <h22>Improve Your Tech Knowledge </h22>
+      </div>
 
       <section className="section">
         <Card 
@@ -145,26 +153,41 @@ const Homepage = () => {
       </section>
 
       <div className='Headings'>
-        <h2>Related Articles and Blogs</h2>
+        <h22>Related Articles and Blogs</h22>
       </div>
 
       <section className="section">
-        <Card 
-          title="Understanding Tech" 
-          description="A comprehensive guide to understanding modern technology." 
-          link="/understanding-tech" 
+      <div
+        onClick={() => handleCardClick('web', 1)}
+        style={{ cursor: 'pointer' }}
+      >
+        <Card
+          title="Understanding Tech"
+          description="A comprehensive guide to understanding modern technology."
+          // link="/understanding-tech"
         />
-        <Card 
-          title="Common Scams" 
-          description="Learn about the most common scams and how to avoid them." 
-          link="/common-scams" 
+      </div>
+      <div
+        onClick={() => handleCardClick('android', 0)}
+        style={{ cursor: 'pointer' }}
+      >
+        <Card
+          title="Common Scams"
+          description="Learn about the most common scams and how to avoid them."
+          // link="/common-scams"
         />
-        <Card 
-          title="Mastering Online Banking" 
-          description="Tips and tricks to efficiently manage your online banking." 
-          link="/online-banking" 
+      </div>
+      <div
+        onClick={() => handleCardClick('desktop', 0)}
+        style={{ cursor: 'pointer' }}
+      >
+        <Card
+          title="Mastering Online Banking"
+          description="Tips and tricks to efficiently manage your online banking."
+          // link="/online-banking"
         />
-      </section>
+      </div>
+    </section>
 
       <Footer />
     </div>
@@ -172,3 +195,4 @@ const Homepage = () => {
 };
 
 export default Homepage;
+

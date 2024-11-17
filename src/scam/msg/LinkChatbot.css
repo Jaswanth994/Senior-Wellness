@@ -8,13 +8,17 @@
   align-items: center;
   min-height: 100vh;
   min-width: 100vw;
+  background-image: url('../assets/scam-prevention-bg.png');
+  /* opacity: ; */
 }
 
 .chatbot-container {
   color: #ffffff;
   max-width: 400px;
+  background-color: white;
   padding: 20px 25px;
-  background-color: rgba(0, 0, 0, 0.8); /* Dark overlay for readability */
+  background-color: rgba(0, 0, 0, 0.8); 
+  opacity: 1;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Soft shadow effect */
   text-align: center;

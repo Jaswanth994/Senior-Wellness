@@ -1,6 +1,6 @@
 // Header.jsx
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState,useRef } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,14 +8,18 @@ import { faUserCircle, faSignOutAlt, faCog, faMoon, faInfoCircle } from '@fortaw
 import Navigation from './homepagefolder/Navigation';
 import animationData from './assets/animHeart.json';
 import './Header.css';
+import './homepagefolder/Navigation.css';
 
 
 const Header = () => {
+        
+    const location = useLocation();
+    const isHome = location.pathname === '/';
     const [user, setUser] = useState(null);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const auth = getAuth();
     const navigate = useNavigate();
-
+    const [isScrolled, setIsScrolled] = useState(false); 
     const removeTranslateBanner = () => {
         const translateBanner = document.querySelector('.goog-te-banner-frame');
         if (translateBanner) {
@@ -24,6 +28,22 @@ const Header = () => {
         }
     };
     
+    // Add scroll listener to handle header style
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+        
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     useEffect(() => {
         const addScript = () => {
           const script = document.createElement('script');
@@ -38,8 +58,6 @@ const Header = () => {
             'google_translate_element'
           );
         };
-    
-      
     
         addScript();
     },[]);
@@ -80,16 +98,87 @@ const Header = () => {
     };
 
 
+    const [isSpeakingEnabled, setIsSpeakingEnabled] = useState(false);
+
+    const speakingRef = useRef(false);
+    const utteranceRef = useRef(new SpeechSynthesisUtterance());
+    const speed = 1;
+  
+    useEffect(() => {
+      const handleMouseOver = (e) => {
+        if (!isSpeakingEnabled) return;
+  
+        const mousePos = document.caretRangeFromPoint(e.clientX, e.clientY);
+        if (mousePos && mousePos.startContainer.nodeType === Node.TEXT_NODE) {
+          const textNode = mousePos.startContainer;
+          const sentence = extractSentence(textNode.textContent, mousePos.startOffset);
+  
+          if (sentence && !speakingRef.current) {
+            speakingRef.current = true;
+            speakText(sentence);
+          }
+        }
+      };
+  
+      document.addEventListener('mousemove', handleMouseOver);
+      return () => {
+        document.removeEventListener('mousemove', handleMouseOver);
+      };
+    }, [isSpeakingEnabled]);
+  
+    const extractSentence = (text, offset) => {
+      const beforeText = text.slice(0, offset);
+      const afterText = text.slice(offset);
+  
+      const sentenceStart = beforeText.lastIndexOf('.') !== -1 ? beforeText.lastIndexOf('.') + 1 : 0;
+      const sentenceEnd = afterText.indexOf('.') !== -1 ? offset + afterText.indexOf('.') + 1 : text.length;
+  
+      const sentence = text.slice(sentenceStart, sentenceEnd).trim();
+      return sentence;
+    };
+  
+    const speakText = (text) => {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+  
+      utteranceRef.current.text = text;
+      utteranceRef.current.rate = speed;
+  
+      utteranceRef.current.onend = () => {
+        speakingRef.current = false;
+      };
+  
+      speechSynthesis.speak(utteranceRef.current);
+    };
+  
+    const handleSpeakingToggle = () => {
+      setIsSpeakingEnabled(!isSpeakingEnabled);
+    };
+
     return (
-        <header className="header">
+        <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+            
             <div className="header-title-container">
-                <h1 className="header-title">Senior Wellness</h1>
+                <div className="header-title">Senior Wellness</div>
                 <div className="lottie-container">
                     <Lottie animationData={animationData} style={{ width: 40, height: 40 }} />
                 </div>
+                
+                <div className="translate-speaking-box">
+                    <div id="google_translate_element" className="translate-widget"></div>
+                    <button
+                        onClick={handleSpeakingToggle}
+                        className={`speaking-button ${isSpeakingEnabled ? 'enabled' : ''}`}
+                    >
+                        {isSpeakingEnabled ? 'Disable Speaking' : 'Enable Speaking'}
+                    </button>
+                </div>
             </div>
-            <div id="google_translate_element" className="translate-widget"></div>
-            {/* <Navigation /> */}
+            <div className="header-title-container">
+            <Link to="/" className={`home-link ${isHome ? 'active' : ''}`}>
+                Home
+            </Link>
             <nav className="auth-navigation">
                 {user ? (
                     <div className="profile-section">
@@ -111,22 +200,26 @@ const Header = () => {
                                 <div className="dropdown-item" onClick={() => alert("Change mode feature coming soon!")}>
                                     <FontAwesomeIcon icon={faMoon} /> Change Mode
                                 </div>
-                                {/* <div id="google_translate_element" className="dropdown-item translate-option"></div> */}
                                 <div className="dropdown-item" onClick={handleLogout}>
                                     <FontAwesomeIcon icon={faSignOutAlt} /> Logout
                                 </div>
                             </div>
-)}
+                        )}
                     </div>
                 ) : (
                     <div className="header-login-section">
                         <Link to="/login">Login</Link>
-                        <div id="google_translate_element" className="translate-option"></div>
                     </div>
                 )}
-            </nav>  
+            </nav>
+            </div>
         </header>
     );
+    
 };
 
+
 export default Header;
+
+
+

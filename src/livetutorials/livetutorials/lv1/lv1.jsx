@@ -4,7 +4,6 @@
     import '../../live.css';
 
 
-
     // Import images
     import step1 from './images/homescreen.jpg';
     import step2 from './images/whatsapp-home.jpg';
@@ -16,6 +15,7 @@
     // Import sounds
     import hoverSoundPath from '../sounds/hover.mp3';
     import clickSoundPath from '../sounds/click-button.mp3';
+    import Header from '../../../Header.jsx';
 
     const steps = [
       {
@@ -142,9 +142,12 @@
       }, [currentStep]); // Call speakText when currentStep changes
 
       return (
+        <div>
+          <Header />
+          <h2 className='hd'>How to Share Your Location in WhatsApp</h2>
         <div className="guide-container">
-          <h2>How to Share Your Location in WhatsApp</h2>
-
+          <div className='contan'>
+          
           <div className="image-container1">
             <motion.img
               key={currentStep}
@@ -225,7 +228,7 @@
 
           <p>{description}</p>
           <p className="info-text">{info}</p>
-
+          </div>
           <div className="button-container">
             <motion.button
               className="prev-button"
@@ -260,15 +263,16 @@
             >
               Hear Instructions
             </motion.button>
-            <motion.button
+            {/* <motion.button
               className="home-button"
               onClick={handleHome}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
               Go to Homepage
-            </motion.button>
+            </motion.button> */}
           </div>
+        </div>
         </div>
       );
     };

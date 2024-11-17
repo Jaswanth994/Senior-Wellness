@@ -10,6 +10,19 @@ html, body {
 }
 
 /* Shared Styles for Containers */
+/* Background Image */
+.background-style {
+  background: url('../assets/bimg.png') no-repeat center center fixed;
+  background-size: cover;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 .container {
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
@@ -53,6 +66,7 @@ h1 {
 
 h2 {
   font-size: 2.5rem;
+  font-weight: bold;
   color: #2C3E50; /* Dark Slate Blue */
   margin-bottom: 1.5rem;
 }
@@ -65,7 +79,7 @@ h2 {
 
 /* Shared button styles */
 .btn-primary {
-  background-color: blue; /* Warm Yellow for call-to-action buttons */
+  background-color: #88919b; /* Warm Yellow for call-to-action buttons */
   color: #FFFFFF; /* White text */
   border: none;
   padding: 15px 30px;
@@ -78,7 +92,7 @@ h2 {
 
 .btn-primary:hover {
   background-color: #FFCC33; /* Slightly brighter yellow on hover */
-  transform: scale(1.1); /* Slight zoom effect */
+  transform: scale(1.005); /* Slight zoom effect */
 }
 
 @media (max-width: 768px) {

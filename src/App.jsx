@@ -58,6 +58,7 @@ function App() {
       else if (command.includes('language')) navigate('/option/language');
       else if (command.includes('scam home')) navigate('/scamhome');
       else if (command.includes('call')) navigate('/call');
+      else if (commad.includes('Message')) navigate('/link-chatbot');
       else console.log('Unrecognized command');
     };
 
@@ -94,6 +95,7 @@ function App() {
       <li><strong>"Ringtone"</strong> - Set up Ringtone Tutorial</li>
       <li><strong>"Language"</strong>- Set up Language Tutorial</li>
       <li><strong>"Call"</strong>-Goes to Call scam</li>
+      <li><strong>"Message"</strong>-Goes to Message scam</li>
     </ul>
   </div>
 </div>
@@ -106,6 +108,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/helloworld" element={<HelloWorld />} />
+        {/* <Route path="/afterlogin" element={<AfterLogin />} /> AfterLogin Route */}
         <Route path="/quiz/:category" element={<Quiz />} />
         <Route path="/results" element={<Results />} />
         {/* <Route path="/type1-articles" element={<ArticlesPage />} /> */}

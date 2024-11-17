@@ -3,6 +3,7 @@ import './LinkChatbot.css';
 import clickSound from '../assets/click-sound.mp3';
 import photo from '../assets/scam-prevention-bg.png';
 import { useNavigate } from 'react-router-dom';
+import { color } from 'framer-motion';
 
 const questions = [
   {
@@ -63,15 +64,16 @@ const LinkChatbot = () => {
   return (
     <div
       className="chatbot-background"
-      style={{
-        backgroundImage: `url(${photo})`,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
-      }}
+      // style={{
+      //   backgroundImage: `url(${photo})`,
+      //   display: 'flex',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      //   minHeight: '100vh',
+      //   // opacity:0.66,
+      // }}
     >
-      <div className="chatbot-container">
+      <div className="chatbot-container" style={{opacity: 1}} >
         <button className="home1" onClick={home}>Homepage</button>
         <h2>Scam Detective</h2>
         {showResult ? (

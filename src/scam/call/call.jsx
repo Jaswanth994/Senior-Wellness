@@ -6,7 +6,7 @@
   import hackerAnimationData from './images/Scammer.json';
   import userImage from './images/OldMan.json';
   import ringtone from './sounds/ring.wav';
-
+  import Header from '../../Header';
 
 
   const ChatScamPrevention = () => {
@@ -94,11 +94,12 @@
     };
 
     return (
+      <div> <Header />
       <div className="chat-container">
         
-        <motion.button className="home-button" onClick={handleHome}>
+        {/* <motion.button className="home-button" onClick={handleHome}>
           Go to Homepage
-        </motion.button>
+        </motion.button> */}
         {isIntroActive ? (
           <div className="intro-screen">
             <h2>Welcome to the Call Scam Prevention Simulation</h2>
@@ -180,6 +181,7 @@
             </div>
           </div>
         )}
+        </div>
       </div>
     );
   };

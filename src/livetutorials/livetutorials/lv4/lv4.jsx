@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../live.css';
-
+import Header from "../../../Header.jsx"
 import step1 from './images/app.jpg';
 import step2 from './images/settings.jpeg';
 import step3 from './images/option.jpeg';
@@ -122,8 +122,13 @@ const Ringtone = () => {
   }, [currentStep]); 
 
   return (
+    <div>
+          <Header />
+          <h2 className='hd'>How to Set Language in your in Mobile</h2>
     <div className="guide-container">
-      <h2>How to Set Language in your in Mobile</h2>
+    
+    <div className='contan'>
+      
 
       <div className="image-container1">
         <motion.img
@@ -207,7 +212,7 @@ const Ringtone = () => {
       <div className="info-text-container"> 
         <p className="info-text">{info}</p> 
       </div>
-
+      </div>
       <div className="button-container">
         <motion.button
           className="prev-button"
@@ -243,16 +248,18 @@ const Ringtone = () => {
         >
           Hear Instructions
         </motion.button>
-        <motion.button
+        {/* <motion.button
           className="home-button"
           onClick={handleHome}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
           Go to Homepage
-        </motion.button>
+        </motion.button> */}
       </div>
     </div>
+    </div>
+    // </div>
   );
 };
 
