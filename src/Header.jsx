@@ -105,7 +105,7 @@ const Header = () => {
                                 <Link to="/about-us" className="dropdown-item">
                                     <FontAwesomeIcon icon={faInfoCircle} /> About Us
                                 </Link>
-                                <Link to="/settings" className="dropdown-item">
+                                <Link to="/settings" className="dropdown-item" onClick={() => alert("Settings option feature coming soon!")}>
                                     <FontAwesomeIcon icon={faCog} /> Settings
                                 </Link>
                                 <div className="dropdown-item" onClick={() => alert("Change mode feature coming soon!")}>
