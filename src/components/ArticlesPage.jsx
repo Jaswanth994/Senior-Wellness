@@ -12,9 +12,36 @@ const ArticlesPage = () => {
   // Sample articles for demonstration
   const allArticles = {
     app: [
-      { title: 'App Basics', content: 'Learn the basics of mobile apps, including design, features, and usability.' },
-      { title: 'Advanced App Features', content: 'Dive deeper into app performance, scalability, and advanced user interface design.' },
-    ],
+      { 
+          title: 'Navigating to the Home Screen', 
+          content: 'In most mobile apps, returning to the home screen can be done by tapping a dedicated “Home” button, typically located in the bottom navigation bar. Alternatively, some apps use their logo at the top of the screen as a home link. This consistent placement ensures that users can quickly return to the app’s main dashboard from any section, improving ease of navigation and usability.' 
+      },
+      { 
+          title: 'Finding App Navigation Menus', 
+          content: 'Mobile apps often use a bottom navigation bar or a “hamburger menu” (three horizontal lines) at the top-left corner to house navigation links. These menus provide access to core sections of the app, such as settings, account details, or key features. This layout keeps navigation intuitive and helps users reach their desired destination quickly.' 
+      },
+      { 
+          title: 'Using In-App Search Functions', 
+          content: 'The in-app search bar helps users quickly locate specific content, such as items in a shopping app, videos in a streaming app, or settings in a utility app. Typically represented by a magnifying glass icon, this feature streamlines the user experience by reducing the need to browse through categories manually.' 
+      },
+      { 
+          title: 'Understanding App Notifications', 
+          content: 'Mobile apps often send notifications to inform users about updates, reminders, or promotional offers. These notifications can be managed through the app’s settings, where users can customize what types of alerts they want to receive. Understanding these settings helps users stay informed without feeling overwhelmed by unnecessary alerts.' 
+      },
+      { 
+          title: 'Switching Between Tabs or Sections', 
+          content: 'Many apps organize content into tabs, typically located at the bottom or top of the screen. Tapping on these tabs switches between different sections without needing to navigate back to the main menu. This design enables seamless multitasking and faster access to key features.' 
+      },
+      { 
+          title: 'Using Gesture-Based Navigation', 
+          content: 'Modern apps often incorporate gesture-based navigation, such as swiping left or right to switch pages, pulling down to refresh, or pinching to zoom. These intuitive gestures simplify interaction with the app and reduce the need for multiple button presses, making navigation more fluid and enjoyable.' 
+      },
+      { 
+          title: 'Identifying External Links in Apps', 
+          content: 'External links in mobile apps are often marked with an icon, like an arrow pointing outward, and they open in a browser or another app. Recognizing these links ensures users can access additional resources without losing their place within the app. To return to the app, simply switch back using the app switcher on your device.' 
+      }
+  ]
+  ,
     web: [
       { title: 'Returning to the Homepage', content: 'Returning to the homepage from any page on a website is typically done by clicking the website’s logo at the top of the screen. This design convention makes it easy for users to navigate back to the main page without needing to search for a “Home” button or press the browser’s “Back” button multiple times. The logo link provides a consistent way to reorient users, especially on complex websites with many subpages. Knowing this shortcut can make website navigation quicker and more intuitive, allowing users to explore content while always knowing how to return to the start.' },
       { title: 'Locating Navigation Links', content: 'Website navigation links are generally found in the top bar or a sidebar, providing an easy-to-find menu that directs users to important sections. These menus organize the site’s main categories and are usually consistent across pages. For users, especially those who might be less familiar with web layouts, finding the navigation links in a predictable location simplifies browsing. Websites often rely on this structure to give users a clear path to discover new content, read articles, or make purchases. A well-organized navigation system helps ensure a positive user experience, making it easy to explore and stay engaged.' },

@@ -34,15 +34,6 @@ const Home = () => {
       <h11>Welcome to the Tech Help Quiz</h11> {/* Removed the blue container */}
       <div className="grid-layout">
         <div className="option-box">
-        <Link to="/quiz/app" className="link">
-            <div className="animation-container">
-              <Lottie animationData={appNavAnimation} loop className="lottie-animation" />
-            </div>
-            <p className="caption">App Navigation Quiz</p>
-            
-          </Link>
-        </div>
-        <div className="option-box">
         <Link to="/quiz/web" className="link">
             <div className="animation-container">
               <Lottie animationData={webNavAnimation} loop className="lottie-animation" />
@@ -59,11 +50,20 @@ const Home = () => {
           </Link>
         </div>
         <div className="option-box">
+        <Link to="/quiz/app" className="link">
+            <div className="animation-container">
+              <Lottie animationData={appNavAnimation} loop className="lottie-animation" />
+            </div>
+            <p className="caption">App Navigation Quiz</p>
+            
+          </Link>
+        </div>
+        <div className="option-box">
         <Link to="/quiz/desktop" className="link">
             <div className="animation-container">
               <Lottie animationData={iosNavAnimation} loop className="lottie-animation" />
             </div>
-            <p className="caption">iOS Navigation Quiz</p>
+            <p className="caption">Desktop Navigation Quiz</p>
           </Link>
         </div>
       </div>
